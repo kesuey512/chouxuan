@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>信息收集表</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="backdrop"></div>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">Collector + Kana Helper</p>
+        <h1>按不同业务模式收集资料，并自动生成日文假名</h1>
+        <p class="intro">
+          适合账号注册、开会员、官网补资料、抽选、WVS 专拍等场景。现在先按业务场景分组，再选具体类型；填写完成后可以一键生成并复制整理好的内容。
+        </p>
+      </section>
+
+      <section class="panel layout">
+        <aside class="mode-panel">
+          <div class="section-head">
+            <h2>业务模式</h2>
+            <p>先选场景，再选具体类型</p>
+          </div>
+          <div id="modeList" class="mode-list"></div>
+        </aside>
+
+        <section class="form-panel">
+          <div class="section-head">
+            <div>
+              <h2 id="modeTitle">填写表单</h2>
+              <p id="modeSubtitle">根据所选模式动态显示字段</p>
+            </div>
+            <button id="resetFormButton" class="ghost-button" type="button">清空当前表单</button>
+          </div>
+
+          <div class="notice-strip">
+            <strong>说明：</strong>
+            <span id="modeNote">片假名会优先根据中文姓名自动生成，你也可以手动修改。</span>
+          </div>
+
+          <form id="collectorForm" class="collector-form">
+            <div id="formFields" class="field-grid"></div>
+            <div id="statusOutput" class="meta">
+              <p>中文姓名会自动补全片假名，护照英文姓名会自动补全全角版本。</p>
+            </div>
+            <div class="result-grid compact-preview">
+              <article class="card">
+                <span class="card-title">自动片假名</span>
+                <p id="katakanaPreview" class="kana">-</p>
+              </article>
+              <article class="card">
+                <span class="card-title">自动平假名</span>
+                <p id="hiraganaPreview" class="kana">-</p>
+              </article>
+            </div>
+
+            <div class="action-row">
+              <button id="submitButton" class="primary-button" type="submit">生成可复制内容</button>
+              <button id="copyDraftButton" class="ghost-button" type="button">复制当前填写内容</button>
+            </div>
+          </form>
+        </section>
+      </section>
+
+      <section class="panel submissions-panel">
+        <div class="section-head">
+          <div>
+            <h2>复制结果</h2>
+            <p>生成后可以直接发给你</p>
+          </div>
+          <button id="copyResultButton" class="ghost-button" type="button">复制结果</button>
+        </div>
+        <div class="notice-box">
+          这是纯前端静态页面。所有人都可以直接打开、按模板填写、生成格式化结果，然后一键复制发给你。
+        </div>
+        <pre id="resultOutput" class="submission-pre">这里会显示整理好的可复制结果。</pre>
+      </section>
+    </main>
+
+    <script src="./pinyin-map.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
