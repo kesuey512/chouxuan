@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
@@ -10,11 +10,9 @@
     <div class="backdrop"></div>
     <main class="shell">
       <section class="hero">
-        <p class="eyebrow">Collector + Kana Helper</p>
-        <h1>按不同业务模式收集资料，并自动生成日文假名</h1>
-        <p class="intro">
-          适合账号注册、开会员、官网补资料、抽选、WVS 专拍等场景。现在先按业务场景分组，再选具体类型；填写完成后可以一键生成并复制整理好的内容。
-        </p>
+        <p class="eyebrow">闲鱼：在云上吃薯条<br />小红书：在云上吃薯条<br />微信：Keutaro_yy</p>
+        <h1>抽选信息收集</h1>
+        <p class="intro">你好，填完抽选信息后我会按照下单顺序进行抽选，都会在截止前抽完的，如果你很急的话，现在还可以联系我退款，发完信息后默认进入抽选流程，到时在退款会扣除10%，抽选完毕后不能退款，即使落选也不会退款的，感谢理解。</p>
       </section>
 
       <section class="panel layout">
@@ -70,11 +68,9 @@
             <h2>复制结果</h2>
             <p>生成后可以直接发给你</p>
           </div>
-          <button id="copyResultButton" class="ghost-button" type="button">复制结果</button>
+          <button id="copyResultButton" class="ghost-button result-copy-button" type="button">一键复制</button>
         </div>
-        <div class="notice-box">
-          这是纯前端静态页面。所有人都可以直接打开、按模板填写、生成格式化结果，然后一键复制发给你。
-        </div>
+        <div class="notice-box">如果在微信沟通，请添加：<button id="copyWechatButton" class="inline-copy-button" type="button">Keutaro_yy</button>，然后把信息发到微信即可，添加的时候需要备注一下闲鱼id。如果还是想要在闲鱼沟通的话，直接把信息发到闲鱼对话框即可。</div>
         <pre id="resultOutput" class="submission-pre">这里会显示整理好的可复制结果。</pre>
       </section>
     </main>
@@ -83,3 +79,6 @@
     <script src="./app.js"></script>
   </body>
 </html>
+
+
+

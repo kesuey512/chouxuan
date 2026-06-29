@@ -1,4 +1,4 @@
-const COMPOUND_SURNAME_PINYIN = {
+﻿const COMPOUND_SURNAME_PINYIN = {
   "欧阳": ["ou", "yang"],
   "司马": ["si", "ma"],
   "诸葛": ["zhu", "ge"],
@@ -62,60 +62,60 @@ const PINYIN_TO_KATAKANA = {
 };
 
 const FIELD_LIBRARY = {
-  passportEnglishName: { label: "护照英文姓名", type: "text", placeholder: "例如：WANG XIAOMING" },
-  passportEnglishNameFullwidth: { label: "护照英文姓名（全角）", type: "text", placeholder: "自动生成", readonly: true },
-  passportEnglishSurname: { label: "护照英文姓氏", type: "text", placeholder: "例如：WANG" },
-  passportEnglishSurnameFullwidth: { label: "护照英文姓氏（全角）", type: "text", placeholder: "自动生成", readonly: true },
-  passportEnglishGiven: { label: "护照英文名字", type: "text", placeholder: "例如：XIAOMING" },
-  passportEnglishGivenFullwidth: { label: "护照英文名字（全角）", type: "text", placeholder: "自动生成", readonly: true },
-  passportChineseName: { label: "护照中文姓名", type: "text", placeholder: "例如：王小明" },
-  gender: { label: "性别", type: "select", options: ["男", "女", "其他"] },
-  email: { label: "邮箱", type: "email", placeholder: "example@email.com" },
-  birthday: { label: "生日（年月日）", type: "text", placeholder: "例如：2001-06-24" },
-  phone: { label: "电话", type: "tel", placeholder: "例如：09012345678" },
-  favoriteMember: { label: "最喜欢的成员", type: "text", placeholder: "可填写成员名" },
-  wechat: { label: "微信号（仅备用）", type: "text", placeholder: "可选填写" },
-  memberEmail: { label: "会员邮箱", type: "email", placeholder: "会员登录邮箱" },
-  memberPassword: { label: "会员密码", type: "text", placeholder: "会员登录密码" },
-  memberNumber: { label: "会员号", type: "text", placeholder: "会员编号" },
-  wvsEmail: { label: "WVS账号（邮箱）", type: "email", placeholder: "WVS 登录邮箱" },
-  wvsPassword: { label: "WVS密码", type: "text", placeholder: "WVS 登录密码" },
-  address: { label: "地址", type: "textarea", placeholder: "例如：填写到市即可" },
-  japanAddress: { label: "日本地址", type: "textarea", placeholder: "填写完整可用地址" },
-  lotteryInfo: { label: "抽选信息", type: "textarea", placeholder: "例如：6.24 指定席 一张" },
-  reservationNumber: { label: "预约番号", type: "text", placeholder: "如果适用再填写" },
-  optionalJapanPhone: { label: "可验证日本电话", type: "text", placeholder: "没有可留空", help: "如果你有可以验证的日本电话可以发给我，没有的话忽略。" },
-  optionalJapanAddressPhone: { label: "自带日本邮编地址和电话", type: "textarea", placeholder: "没有可留空", help: "如果你自带日本邮编地址和电话，直接填在这里；没有可忽略。" },
-  kanaSurname: { label: "日文片假名姓", type: "text", placeholder: "根据中文姓名自动生成", readonly: true },
-  kanaGiven: { label: "日文片假名名", type: "text", placeholder: "根据中文姓名自动生成", readonly: true },
-  kanaFull: { label: "日文片假名", type: "text", placeholder: "根据中文姓名自动生成", readonly: true },
-  hiraganaFull: { label: "日文平假名", type: "text", placeholder: "根据中文姓名自动生成", readonly: true },
-  piaNote: { label: "补充说明", type: "textarea", placeholder: "可填写其他备注", help: "如无内容可留空。" }
+  passportEnglishName: { label: "\u62a4\u7167\u82f1\u6587\u59d3\u540d", type: "text", placeholder: "\u4f8b\u5982\uff1aWANG XIAOMING" },
+  passportEnglishNameFullwidth: { label: "\u62a4\u7167\u82f1\u6587\u59d3\u540d\uff08\u5168\u89d2\uff09", type: "text", placeholder: "\u81ea\u52a8\u751f\u6210", readonly: true },
+  passportEnglishSurname: { label: "\u62a4\u7167\u82f1\u6587\u59d3\u6c0f", type: "text", placeholder: "\u4f8b\u5982\uff1aWANG" },
+  passportEnglishSurnameFullwidth: { label: "\u62a4\u7167\u82f1\u6587\u59d3\u6c0f\uff08\u5168\u89d2\uff09", type: "text", placeholder: "\u81ea\u52a8\u751f\u6210", readonly: true },
+  passportEnglishGiven: { label: "\u62a4\u7167\u82f1\u6587\u540d\u5b57", type: "text", placeholder: "\u4f8b\u5982\uff1aXIAOMING" },
+  passportEnglishGivenFullwidth: { label: "\u62a4\u7167\u82f1\u6587\u540d\u5b57\uff08\u5168\u89d2\uff09", type: "text", placeholder: "\u81ea\u52a8\u751f\u6210", readonly: true },
+  passportChineseName: { label: "\u62a4\u7167\u4e2d\u6587\u59d3\u540d", type: "text", placeholder: "\u4f8b\u5982\uff1a\u738b\u5c0f\u660e" },
+  gender: { label: "\u6027\u522b", type: "select", options: ["\u7537", "\u5973", "\u5176\u4ed6"] },
+  email: { label: "\u90ae\u7bb1", type: "email", placeholder: "example@email.com" },
+  birthday: { label: "\u751f\u65e5\uff08\u5e74\u6708\u65e5\uff09", type: "text", placeholder: "\u4f8b\u5982\uff1a2001-06-24" },
+  phone: { label: "\u7535\u8bdd", type: "tel", placeholder: "\u586b\u5199\u80fd\u6536\u5230\u9a8c\u8bc1\u7801\u7684\u7535\u8bdd" },
+  globalMemberPhone: { label: "\u7535\u8bdd", type: "tel", placeholder: "\u4e0e\u4f1a\u5458\u4fe1\u606f\u4e00\u81f4" },
+  memberInfoPhone: { label: "\u7535\u8bdd", type: "tel", placeholder: "\u4e0e\u4f1a\u5458\u4fe1\u606f\u4e00\u81f4" },
+  wvsJpPhone: { label: "\u7535\u8bdd", type: "tel", placeholder: "\u586b\u5199\u4e0e\u65e5\u5496\u5b98\u7f51\u4e00\u81f4\u7684\u5185\u5bb9" },
+  favoriteMember: { label: "\u6700\u559c\u6b22\u7684\u6210\u5458", type: "text", placeholder: "\u53ef\u586b\u5199\u6210\u5458\u540d" },
+  wechat: { label: "\u5fae\u4fe1\u53f7\uff08\u4ec5\u5907\u7528\uff09", type: "text", placeholder: "\u53ef\u9009\u586b\u5199" },
+  memberEmail: { label: "\u4f1a\u5458\u90ae\u7bb1", type: "email", placeholder: "\u4f1a\u5458\u767b\u5f55\u90ae\u7bb1" },
+  memberPassword: { label: "\u4f1a\u5458\u5bc6\u7801", type: "text", placeholder: "\u4f1a\u5458\u767b\u5f55\u5bc6\u7801" },
+  memberNumber: { label: "\u4f1a\u5458\u53f7", type: "text", placeholder: "\u4f1a\u5458\u7f16\u53f7" },
+  wvsEmail: { label: "wvs\u8d26\u53f7\uff08\u90ae\u7bb1\uff09", type: "email", placeholder: "wvs \u767b\u5f55\u90ae\u7bb1" },
+  wvsPassword: { label: "wvs\u5bc6\u7801", type: "text", placeholder: "wvs \u767b\u5f55\u5bc6\u7801" },
+  address: { label: "\u5730\u5740", type: "textarea", placeholder: "\u4f8b\u5982\uff1a\u586b\u5199\u5230\u5e02\u5373\u53ef" },
+  japanAddress: { label: "\u65e5\u672c\u5730\u5740", type: "textarea", placeholder: "\u586b\u5199\u5b8c\u6574\u53ef\u7528\u5730\u5740" },
+  wvsJpAddress: { label: "\u65e5\u672c\u5730\u5740", type: "textarea", placeholder: "\u586b\u5199\u4e0e\u65e5\u5496\u5b98\u7f51\u4e00\u81f4\u7684\u5185\u5bb9" },
+  memberInfoAddress: { label: "\u65e5\u672c\u5730\u5740", type: "textarea", placeholder: "\u4e0e\u4f1a\u5458\u4fe1\u606f\u4e00\u81f4" },
+  lotteryInfo: { label: "\u62bd\u9009\u4fe1\u606f", type: "textarea", placeholder: "\u4f8b\u5982\uff1a6.24 \u6307\u5b9a\u5e2d \u4e00\u5f20" },
+  reservationNumber: { label: "\u9884\u7ea6\u756a\u53f7", type: "text", placeholder: "\u5982\u679c\u9002\u7528\u518d\u586b\u5199" },
+  reservationNumberRequired: { label: "\u9884\u7ea6\u756a\u53f7", type: "text", placeholder: "\u7f57\u68ee\u5347p\u5fc5\u586b", required: true },
+  optionalJapanPhone: { label: "\u53ef\u9a8c\u8bc1\u65e5\u672c\u7535\u8bdd", type: "text", placeholder: "\u6ca1\u6709\u53ef\u7559\u7a7a", help: "\u5982\u679c\u4f60\u6709\u53ef\u4ee5\u9a8c\u8bc1\u7684\u65e5\u672c\u7535\u8bdd\u53ef\u4ee5\u53d1\u7ed9\u6211\uff0c\u6ca1\u6709\u7684\u8bdd\u5ffd\u7565\u3002" },
+  optionalJapanAddressPhone: { label: "\u81ea\u5e26\u65e5\u672c\u90ae\u7f16\u5730\u5740\u548c\u7535\u8bdd", type: "textarea", placeholder: "\u6ca1\u6709\u53ef\u7559\u7a7a", help: "\u5982\u679c\u4f60\u81ea\u5e26\u65e5\u672c\u90ae\u7f16\u5730\u5740\u548c\u7535\u8bdd\uff0c\u76f4\u63a5\u586b\u5728\u8fd9\u91cc\uff1b\u6ca1\u6709\u53ef\u5ffd\u7565\u3002" },
+  kanaFull: { label: "\u65e5\u6587\u7247\u5047\u540d", type: "text", placeholder: "\u6839\u636e\u4e2d\u6587\u59d3\u540d\u81ea\u52a8\u751f\u6210", readonly: true },
+  manualKanaFull: { label: "\u65e5\u6587\u7247\u5047\u540d", type: "text", placeholder: "\u586b\u5199\u4e0e\u65e5\u5496\u5b98\u7f51\u4e00\u81f4\u7684\u5185\u5bb9" },
+  hiraganaFull: { label: "\u65e5\u6587\u5e73\u5047\u540d", type: "text", placeholder: "\u6839\u636e\u4e2d\u6587\u59d3\u540d\u81ea\u52a8\u751f\u6210", readonly: true },
+  piaNote: { label: "\u8865\u5145\u8bf4\u660e", type: "textarea", placeholder: "\u53ef\u586b\u5199\u5176\u4ed6\u5907\u6ce8", help: "\u5982\u65e0\u5185\u5bb9\u53ef\u7559\u7a7a\u3002" }
 };
 
 const MODE_GROUPS = [
-  { id: "open_only", label: "仅开通账号/会员", hint: "适合只注册账号、开会员，不参加本次抽选" },
-  { id: "open_and_lottery", label: "开通账号/会员并参加抽选", hint: "适合从零开始，需要一起准备账号和抽选资料" },
-  { id: "lottery_only", label: "已有账号，仅参加抽选", hint: "适合已经有会员或账号，只补本次抽选信息" },
-  { id: "wvs_special", label: "WVS 会员专拍", hint: "保留给 WVS 会员专拍或特殊活动场景" }
+  { id: "open_only", label: "\u4ec5\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458", hint: "\u9002\u5408\u53ea\u5f00\u901a\u8d26\u53f7\u6216\u4f1a\u5458" },
+  { id: "open_and_lottery", label: "\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458\u5e76\u53c2\u52a0\u62bd\u9009", hint: "\u4ece\u96f6\u51c6\u5907\u8d26\u53f7\u548c\u62bd\u9009\u8d44\u6599" },
+  { id: "lottery_only", label: "\u5df2\u6709\u8d26\u53f7\uff0c\u4ec5\u53c2\u52a0\u62bd\u9009", hint: "\u5df2\u6709\u4f1a\u5458\u6216\u8d26\u53f7\uff0c\u53ea\u8865\u62bd\u9009\u4fe1\u606f" },
+  { id: "wvs_special", label: "WVS \u4f1a\u5458\u4e13\u62cd", hint: "\u53ea\u9700\u8981\u5f00\u901a\u65e5\u5496\u4f1a\u5458\uff0c\u4e0d\u9700\u8981\u5e2e\u5fd9\u5b8c\u5584\u5b98\u7f51\u4fe1\u606f" }
 ];
 
 const MODE_TEMPLATES = [
-  { id: "account_pia", group: "open_only", category: "票务账号", name: "pia账号", subtitle: "仅注册 pia 账号", note: "护照中文名会自动带出片假名和平假名，护照英文姓名会自动生成全角版本。", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "gender", "email", "birthday", "optionalJapanPhone", "piaNote"] },
-  { id: "account_eplus", group: "open_only", category: "票务账号", name: "eplus账号", subtitle: "仅注册 eplus 账号", note: "会根据中文姓名自动生成片假名姓和名，也会显示平假名。", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaSurname", "kanaGiven", "kanaFull", "hiraganaFull", "gender", "email", "birthday", "optionalJapanPhone"] },
-  { id: "fanclub_member_official", group: "open_only", category: "日咖/官网", name: "会员 + 官网", subtitle: "开通 fanclub 会员与官网资料", note: "含片假名、平假名、电话、邮箱、生日、喜欢的成员。", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaSurname", "kanaGiven", "kanaFull", "hiraganaFull", "gender", "phone", "email", "birthday", "favoriteMember", "optionalJapanAddressPhone"] },
-  { id: "wvs_member", group: "open_only", category: "WVS", name: "WVS会员", subtitle: "仅开通 WVS 会员", note: "用于 WVS 会员申请。", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaSurname", "kanaGiven", "kanaFull", "hiraganaFull", "gender", "phone", "wvsEmail", "wvsPassword"] },
-  { id: "wvs_member_official", group: "open_only", category: "WVS", name: "WVS会员 + 官网", subtitle: "开通 WVS 会员并补官网资料", note: "包含生日、喜欢的成员、备用微信等。", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaSurname", "kanaGiven", "kanaFull", "hiraganaFull", "gender", "phone", "wvsEmail", "wvsPassword", "birthday", "favoriteMember", "wechat", "optionalJapanAddressPhone"] },
-  { id: "wvs_official", group: "open_only", category: "WVS", name: "WVS官网", subtitle: "已有邮箱，补官网资料", note: "如果没有 WVS 账号，也可以先填邮箱。", fields: ["wvsEmail", "wvsPassword", "gender", "birthday", "favoriteMember", "optionalJapanAddressPhone"] },
-  { id: "fanclub_all", group: "open_and_lottery", category: "日咖/官网", name: "会员 + 官网 + 抽选", subtitle: "开会员并参加本次抽选", note: "适合一次性收集会员、官网和抽选所需信息。", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaSurname", "kanaGiven", "kanaFull", "hiraganaFull", "birthday", "gender", "phone", "email", "favoriteMember", "lotteryInfo", "wechat", "optionalJapanAddressPhone"] },
-  { id: "wvs_all", group: "open_and_lottery", category: "WVS", name: "WVS会员 + 官网 + 抽选", subtitle: "从零准备 WVS 全套资料", note: "没有 WVS 账号的话，填邮箱也可以。", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaSurname", "kanaGiven", "kanaFull", "hiraganaFull", "birthday", "gender", "phone", "wvsEmail", "wvsPassword", "favoriteMember", "lotteryInfo", "wechat", "optionalJapanAddressPhone"] },
-  { id: "fanclub_lottery", group: "lottery_only", category: "日咖抽选", name: "日咖会员抽选", subtitle: "已有日咖会员信息，只填抽选", note: "只填写本次抽选需要的关键信息。", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "gender", "birthday", "memberEmail", "memberPassword", "memberNumber", "phone", "japanAddress", "lotteryInfo", "wechat"] },
-  { id: "wvs_lottery", group: "lottery_only", category: "WVS抽选", name: "WVS会员抽选", subtitle: "已有 WVS 会员资料，只填抽选", note: "本次席位只有指定席，按日期和数量填写即可。", fields: ["passportEnglishSurname", "passportEnglishSurnameFullwidth", "passportEnglishGiven", "passportEnglishGivenFullwidth", "passportChineseName", "kanaSurname", "kanaGiven", "kanaFull", "hiraganaFull", "gender", "birthday", "wvsEmail", "wvsPassword", "memberNumber", "phone", "japanAddress", "lotteryInfo", "wechat", "reservationNumber"] },
-  { id: "wvs_official_lottery", group: "lottery_only", category: "WVS抽选", name: "WVS官网 + 抽选", subtitle: "已有官网账号，补抽选信息", note: "适合已有官网账号、需参加抽选的场景。", fields: ["passportEnglishSurname", "passportEnglishSurnameFullwidth", "passportEnglishGiven", "passportEnglishGivenFullwidth", "passportChineseName", "kanaSurname", "kanaGiven", "kanaFull", "hiraganaFull", "birthday", "gender", "phone", "wvsEmail", "wvsPassword", "favoriteMember", "lotteryInfo", "wechat", "optionalJapanAddressPhone"] },
-  { id: "global_member", group: "lottery_only", category: "Global抽选", name: "Global会员抽选", subtitle: "已有 Global 会员，参加一轮或升 P", note: "地址填写到市即可，抽选信息只写日期即可。", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "birthday", "gender", "phone", "wvsEmail", "wvsPassword", "memberNumber", "address", "reservationNumber", "lotteryInfo"] },
-  { id: "wvs_special", group: "wvs_special", category: "WVS专拍", name: "WVS会员专拍", subtitle: "特殊活动或专拍资料", note: "适合 WVS 会员专拍、会员专属活动等需要基础会员信息的场景。", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaSurname", "kanaGiven", "kanaFull", "hiraganaFull", "gender", "phone", "wvsEmail", "wvsPassword", "birthday", "favoriteMember", "wechat", "optionalJapanAddressPhone"] }
+  { id: "fanclub_member_official", group: "open_only", category: "\u5f00\u901a", name: "\u4ec5\u9700\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458", subtitle: "\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458\u8d44\u6599", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "gender", "phone", "email", "birthday", "optionalJapanAddressPhone"] },
+  { id: "fanclub_all", group: "open_and_lottery", category: "\u62bd\u9009", name: "\u6ca1\u6709wvs\u8d26\u53f7", subtitle: "\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458+\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "birthday", "gender", "phone", "email", "favoriteMember", "lotteryInfo", "wechat", "optionalJapanAddressPhone"] },
+  { id: "wvs_all", group: "open_and_lottery", category: "\u62bd\u9009", name: "\u6709wvs\u8d26\u53f7", subtitle: "\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458+\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "birthday", "gender", "phone", "wvsEmail", "wvsPassword", "favoriteMember", "lotteryInfo", "wechat", "optionalJapanAddressPhone"] },
+  { id: "fanclub_lottery", group: "lottery_only", category: "\u62bd\u9009", name: "\u5176\u4ed6\u4f1a\u5458", subtitle: "\u4ec5\u9700\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "gender", "birthday", "memberEmail", "memberPassword", "memberNumber", "memberInfoPhone", "memberInfoAddress", "lotteryInfo", "wechat"] },
+  { id: "wvs_lottery", group: "lottery_only", category: "\u62bd\u9009", name: "wvs\u65e5\u5496\u4f1a\u5458\u4e00\u8f6e\u62bd\u9009", subtitle: "\u4e00\u8f6e\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "manualKanaFull", "gender", "birthday", "wvsEmail", "wvsPassword", "memberNumber", "wvsJpPhone", "wvsJpAddress", "lotteryInfo", "wechat"] },
+  { id: "wvs_official_lottery", group: "lottery_only", category: "\u5347p", name: "wvs\u65e5\u5496\u4f1a\u5458\u5347p", subtitle: "\u5347p\u5fc5\u586b\u9884\u7ea6\u756a\u53f7", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "manualKanaFull", "gender", "birthday", "wvsEmail", "wvsPassword", "memberNumber", "wvsJpPhone", "wvsJpAddress", "reservationNumberRequired", "lotteryInfo", "wechat"] },
+  { id: "global_member", group: "lottery_only", category: "\u62bd\u9009", name: "global\u4f1a\u5458\u4e00\u8f6e\u62bd\u9009", subtitle: "\u4e00\u8f6e\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "birthday", "gender", "globalMemberPhone", "wvsEmail", "wvsPassword", "memberNumber", "address", "lotteryInfo"] },
+  { id: "global_upgrade", group: "lottery_only", category: "\u5347p", name: "global\u4f1a\u5458\u5347p", subtitle: "\u5347p\u5fc5\u586b\u9884\u7ea6\u756a\u53f7", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "birthday", "gender", "globalMemberPhone", "wvsEmail", "wvsPassword", "memberNumber", "address", "reservationNumberRequired", "lotteryInfo"] },
+  { id: "wvs_special", group: "wvs_special", category: "\u4e13\u62cd", name: "\u5f00\u901awvs\u65e5\u5496\u4f1a\u5458\u4e13\u62cd", subtitle: "\u4e13\u62cd\u6216\u7279\u6b8a\u6d3b\u52a8", note: "", fields: ["passportEnglishName", "passportChineseName", "kanaFull", "gender", "phone", "wvsEmail", "wvsPassword", "wechat"] }
 ];
-
 const modeList = document.getElementById("modeList");
 const modeTitle = document.getElementById("modeTitle");
 const modeSubtitle = document.getElementById("modeSubtitle");
@@ -125,6 +125,7 @@ const collectorForm = document.getElementById("collectorForm");
 const resetFormButton = document.getElementById("resetFormButton");
 const copyDraftButton = document.getElementById("copyDraftButton");
 const copyResultButton = document.getElementById("copyResultButton");
+const copyWechatButton = document.getElementById("copyWechatButton");
 const resultOutput = document.getElementById("resultOutput");
 const statusOutput = document.getElementById("statusOutput");
 const katakanaPreview = document.getElementById("katakanaPreview");
@@ -132,6 +133,58 @@ const hiraganaPreview = document.getElementById("hiraganaPreview");
 
 let activeMode = MODE_TEMPLATES[0];
 let latestFormattedResult = "";
+
+let activeFlowPath = ["open_only"];
+
+const FLOW_TREE = [
+  {
+    id: "open_only",
+    label: "\u4ec5\u9700\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458",
+    hint: "\u53ea\u6536\u96c6\u5f00\u901a\u8d26\u53f7\u6216\u4f1a\u5458\u9700\u8981\u7684\u57fa\u7840\u8d44\u6599",
+    modeId: "fanclub_member_official"
+  },
+  {
+    id: "open_and_lottery",
+    label: "\u9700\u8981\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458+\u62bd\u9009",
+    hint: "\u4ece\u96f6\u51c6\u5907\uff0c\u540c\u65f6\u53c2\u52a0\u62bd\u9009",
+    children: [
+      { id: "has_wvs", label: "\u6709wvs\u8d26\u53f7", modeId: "wvs_all" },
+      { id: "no_wvs", label: "\u6ca1\u6709wvs\u8d26\u53f7", modeId: "fanclub_all" }
+    ]
+  },
+  {
+    id: "lottery_only",
+    label: "\u4ec5\u9700\u62bd\u9009",
+    hint: "\u5df2\u6709\u8d26\u53f7\u6216\u4f1a\u5458\uff0c\u53ea\u8865\u62bd\u9009\u4fe1\u606f",
+    children: [
+      {
+        id: "global_member_branch",
+        label: "global\u4f1a\u5458",
+        children: [
+          { id: "global_round", label: "\u4e00\u8f6e\u62bd\u9009", modeId: "global_member" },
+          { id: "global_upgrade", label: "\u5347p", modeId: "global_upgrade" }
+        ]
+      },
+      {
+        id: "wvs_jp_branch",
+        label: "wvs\u65e5\u5496\u4f1a\u5458",
+        children: [
+          { id: "wvs_round", label: "\u4e00\u8f6e\u62bd\u9009", modeId: "wvs_lottery" },
+          { id: "wvs_upgrade", label: "\u5347p", modeId: "wvs_official_lottery" }
+        ]
+      },
+      { id: "other_member_branch", label: "\u5176\u4ed6\u4f1a\u5458", modeId: "fanclub_lottery" }
+    ]
+  },
+  {
+    id: "wvs_special_direct",
+    label: "\u5f00\u901awvs\u65e5\u5496\u4f1a\u5458\u4e13\u62cd",
+    hint: "\u53ea\u9700\u8981\u5f00\u901a\u65e5\u5496\u4f1a\u5458\uff0c\u4e0d\u9700\u8981\u5e2e\u5fd9\u5b8c\u5584\u5b98\u7f51\u4fe1\u606f",
+    modeId: "wvs_special"
+  }
+];
+
+const MODE_BY_ID = Object.fromEntries(MODE_TEMPLATES.map((mode) => [mode.id, mode]));
 
 function normalizeName(value) {
   return value.replace(/\s+/g, "").trim();
@@ -281,7 +334,7 @@ function setFieldValueIfExists(fieldId, value) {
 }
 
 function clearAutoKanaFields() {
-  ["kanaSurname", "kanaGiven", "kanaFull", "hiraganaFull"].forEach((fieldId) => {
+  ["kanaFull", "hiraganaFull"].forEach((fieldId) => {
     setFieldValueIfExists(fieldId, "");
   });
 }
@@ -294,12 +347,10 @@ function setAutoKanaFromChinese(name) {
     return;
   }
 
-  setFieldValueIfExists("kanaSurname", result.surnameKana);
-  setFieldValueIfExists("kanaGiven", result.givenKana);
+  setFieldValueIfExists(`${result.surnameKana}\u30fb${result.givenKana}`);
   setFieldValueIfExists("kanaFull", result.katakanaFull);
   setFieldValueIfExists("hiraganaFull", result.hiraganaFull);
 }
-
 function syncFullwidthEnglish() {
   const englishName = collectorForm.elements.namedItem("passportEnglishName");
   const englishSurname = collectorForm.elements.namedItem("passportEnglishSurname");
@@ -316,51 +367,109 @@ function syncFullwidthEnglish() {
   }
 }
 
-function renderModeButtons() {
-  modeList.innerHTML = "";
-
-  MODE_GROUPS.forEach((group) => {
-    const groupModes = MODE_TEMPLATES.filter((mode) => mode.group === group.id);
-    if (!groupModes.length) {
-      return;
+function getNodeByPath(path) {
+  let nodes = FLOW_TREE;
+  let node = null;
+  for (const id of path) {
+    node = nodes.find((item) => item.id === id);
+    if (!node) {
+      return null;
     }
-
-    const section = document.createElement("section");
-    section.className = "mode-group";
-
-    const heading = document.createElement("div");
-    heading.className = "mode-group-heading";
-    heading.innerHTML = `
-      <h3>${group.label}</h3>
-      <p>${group.hint}</p>
-    `;
-    section.appendChild(heading);
-
-    const list = document.createElement("div");
-    list.className = "mode-group-list";
-
-    groupModes.forEach((mode) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = `mode-button${mode.id === activeMode.id ? " active" : ""}`;
-      button.innerHTML = `
-        <span class="mode-tag">${mode.category}</span>
-        <span class="mode-name">${mode.name}</span>
-        <span class="mode-meta">${mode.subtitle}</span>
-      `;
-      button.addEventListener("click", () => {
-        activeMode = mode;
-        renderModeButtons();
-        renderActiveMode();
-      });
-      list.appendChild(button);
-    });
-
-    section.appendChild(list);
-    modeList.appendChild(section);
-  });
+    nodes = node.children || [];
+  }
+  return node;
 }
 
+function normalizeFlowPath(path) {
+  const normalized = [...path];
+  let node = getNodeByPath(normalized);
+
+  while (node && node.children && node.children.length === 1) {
+    normalized.push(node.children[0].id);
+    node = node.children[0];
+  }
+
+  if (node && node.modeId && MODE_BY_ID[node.modeId]) {
+    activeMode = MODE_BY_ID[node.modeId];
+  }
+
+  return normalized;
+}
+
+function pathIncludes(columnPath, nodeId) {
+  return activeFlowPath[columnPath.length] === nodeId;
+}
+
+function getChoiceLevels() {
+  const levels = [];
+  let nodes = FLOW_TREE;
+  const path = [];
+
+  while (nodes && nodes.length) {
+    levels.push({ nodes, path: [...path] });
+    const selectedId = activeFlowPath[path.length];
+    const selectedNode = nodes.find((node) => node.id === selectedId);
+    if (!selectedNode || !selectedNode.children || !selectedNode.children.length) {
+      break;
+    }
+    path.push(selectedId);
+    nodes = selectedNode.children;
+  }
+
+  return levels;
+}
+
+function renderChoiceLevel(level, index) {
+  const levelEl = document.createElement("section");
+  levelEl.className = "choice-level";
+
+  const options = document.createElement("div");
+  options.className = "choice-options";
+
+  level.nodes.forEach((node) => {
+    const nodePath = [...level.path, node.id];
+    const selected = pathIncludes(level.path, node.id);
+    const hasChildren = Boolean(node.children && node.children.length);
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `choice-button${selected ? " selected" : ""}`;
+    button.setAttribute("aria-pressed", String(selected));
+
+    const label = document.createElement("span");
+    label.className = "choice-label";
+    label.textContent = node.label;
+    button.appendChild(label);
+
+    if (node.hint) {
+      const hint = document.createElement("span");
+      hint.className = "choice-hint";
+      hint.textContent = node.hint;
+      button.appendChild(hint);
+    }
+
+    button.addEventListener("click", () => {
+      activeFlowPath = normalizeFlowPath(nodePath);
+      renderModeButtons();
+      renderActiveMode();
+    });
+
+    options.appendChild(button);
+  });
+
+  levelEl.appendChild(options);
+  return levelEl;
+}
+
+function renderModeButtons() {
+  activeFlowPath = normalizeFlowPath(activeFlowPath);
+  modeList.innerHTML = "";
+  modeList.className = "choice-list";
+
+  getChoiceLevels().forEach((level, index) => {
+    modeList.appendChild(renderChoiceLevel(level, index));
+  });
+}
 function createField(fieldId) {
   const config = FIELD_LIBRARY[fieldId];
   const wrapper = document.createElement("div");
@@ -396,6 +505,10 @@ function createField(fieldId) {
   input.placeholder = config.placeholder || "";
   if (config.readonly) {
     input.readOnly = true;
+  }
+  if (config.required) {
+    input.required = true;
+    label.textContent = `${config.label} *`;
   }
   wrapper.appendChild(input);
 
@@ -459,10 +572,10 @@ function formatSubmission(mode, data) {
     "passportEnglishGiven",
     "passportEnglishGivenFullwidth",
     "passportChineseName",
-    "kanaSurname",
-    "kanaGiven",
+    
     "kanaFull",
-    "hiraganaFull"
+    "hiraganaFull",
+    "reservationNumberRequired"
   ];
   const remainingFields = mode.fields.filter((fieldId) => !preferredOrder.includes(fieldId));
   const orderedFields = [...preferredOrder.filter((fieldId) => mode.fields.includes(fieldId)), ...remainingFields];
@@ -536,7 +649,46 @@ resetFormButton.addEventListener("click", () => {
 });
 copyDraftButton.addEventListener("click", copyDraft);
 copyResultButton.addEventListener("click", copyResult);
+if (copyWechatButton) {
+  copyWechatButton.addEventListener("click", async () => {
+    try {
+      await copyText("Keutaro_yy");
+      copyWechatButton.textContent = "已复制 Keutaro_yy";
+      setTimeout(() => {
+        copyWechatButton.textContent = "Keutaro_yy";
+      }, 1600);
+    } catch {
+      copyWechatButton.textContent = "复制失败";
+    }
+  });
+}
 
 renderModeButtons();
 renderActiveMode();
 renderFormattedResult("");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
