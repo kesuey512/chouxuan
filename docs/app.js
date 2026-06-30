@@ -62,7 +62,7 @@ const PINYIN_TO_KATAKANA = {
 };
 
 const FIELD_LIBRARY = {
-  passportEnglishName: { label: "\u62a4\u7167\u82f1\u6587\u59d3\u540d", type: "text", placeholder: "\u4f8b\u5982\uff1aWANG XIAOMING" },
+  passportEnglishName: { label: "\u62a4\u7167\u82f1\u6587\u59d3\u540d", type: "text", placeholder: "\u4e00\u822c\u4e3a\u5927\u5199\u62fc\u97f3\uff0c\u5c11\u6570\u60c5\u51b5\u4e0d\u4e00\u81f4\uff0c\u8bf7\u81ea\u5df1\u786e\u8ba4" },
   passportEnglishNameFullwidth: { label: "\u62a4\u7167\u82f1\u6587\u59d3\u540d\uff08\u5168\u89d2\uff09", type: "text", placeholder: "\u81ea\u52a8\u751f\u6210", readonly: true },
   passportEnglishSurname: { label: "\u62a4\u7167\u82f1\u6587\u59d3\u6c0f", type: "text", placeholder: "\u4f8b\u5982\uff1aWANG" },
   passportEnglishSurnameFullwidth: { label: "\u62a4\u7167\u82f1\u6587\u59d3\u6c0f\uff08\u5168\u89d2\uff09", type: "text", placeholder: "\u81ea\u52a8\u751f\u6210", readonly: true },
