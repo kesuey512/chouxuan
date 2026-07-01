@@ -131,6 +131,8 @@ const statusOutput = document.getElementById("statusOutput");
 const katakanaPreview = document.getElementById("katakanaPreview");
 const hiraganaPreview = document.getElementById("hiraganaPreview");
 
+const REVIEW_BONUS_TEXT = "带中选截图给我闲鱼好评的话，下次可以再免费找我代抽一次~如果落选的话，不需要带图，直接好评的话，也可以再免费抽选一次。要是当前订单不能评价的话，拍我首页的0.01万能拍写评价就可以。（所有代抽除了罗森信用卡不保证一定能抽上，其他都可以。）";
+
 let activeMode = MODE_TEMPLATES[0];
 let latestFormattedResult = "";
 
@@ -580,10 +582,11 @@ function formatSubmission(mode, data) {
   const remainingFields = mode.fields.filter((fieldId) => !preferredOrder.includes(fieldId));
   const orderedFields = [...preferredOrder.filter((fieldId) => mode.fields.includes(fieldId)), ...remainingFields];
 
-  return orderedFields
+  const formText = orderedFields
     .filter((fieldId) => data[fieldId])
     .map((fieldId) => `${FIELD_LIBRARY[fieldId].label}：${data[fieldId]}`)
     .join("\n");
+  return formText ? `${formText}\n\n${REVIEW_BONUS_TEXT}` : "";
 }
 
 function renderFormattedResult(text) {
