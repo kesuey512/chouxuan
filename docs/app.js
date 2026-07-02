@@ -131,8 +131,6 @@ const statusOutput = document.getElementById("statusOutput");
 const katakanaPreview = document.getElementById("katakanaPreview");
 const hiraganaPreview = document.getElementById("hiraganaPreview");
 
-const REVIEW_BONUS_TEXT = "带中选截图给我闲鱼好评的话，下次可以再免费找我代抽一次~如果落选的话，不需要带图，直接好评的话，也可以再免费抽选一次。要是当前订单不能评价的话，拍我首页的0.01万能拍写评价就可以。（所有代抽除了罗森信用卡不保证一定能抽上，其他都可以。）";
-
 let activeMode = MODE_TEMPLATES[0];
 let latestFormattedResult = "";
 
@@ -586,7 +584,7 @@ function formatSubmission(mode, data) {
     .filter((fieldId) => data[fieldId])
     .map((fieldId) => `${FIELD_LIBRARY[fieldId].label}：${data[fieldId]}`)
     .join("\n");
-  return formText ? `${formText}\n\n${REVIEW_BONUS_TEXT}` : "";
+  return formText;
 }
 
 function renderFormattedResult(text) {
@@ -607,12 +605,7 @@ async function submitCurrentForm(event) {
   }
 
   renderFormattedResult(formatted);
-  try {
-    await copyText(formatted);
-    statusOutput.innerHTML = "<p>已生成并复制整理好的内容。</p>";
-  } catch {
-    statusOutput.innerHTML = "<p>已生成内容，但自动复制失败，请手动复制。</p>";
-  }
+  statusOutput.innerHTML = "<p>已生成可复制结果，请确认信息无误后再点击一键复制。</p>";
 }
 
 async function copyDraft() {
