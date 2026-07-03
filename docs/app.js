@@ -130,6 +130,10 @@ const resultOutput = document.getElementById("resultOutput");
 const statusOutput = document.getElementById("statusOutput");
 const katakanaPreview = document.getElementById("katakanaPreview");
 const hiraganaPreview = document.getElementById("hiraganaPreview");
+const homePrompt = document.getElementById("homePrompt");
+const serviceEntryPanel = document.querySelector(".service-entry-panel");
+const serviceEntryButtons = document.querySelectorAll("[data-service-entry]");
+const serviceSections = document.querySelectorAll("[data-service-section]");
 
 let activeMode = MODE_TEMPLATES[0];
 let latestFormattedResult = "";
@@ -658,6 +662,24 @@ if (copyWechatButton) {
     }
   });
 }
+
+serviceEntryButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const service = button.dataset.serviceEntry;
+    serviceEntryPanel?.classList.add("compact");
+    if (homePrompt) {
+      homePrompt.hidden = true;
+    }
+    serviceEntryButtons.forEach((entryButton) => {
+      const isActive = entryButton === button;
+      entryButton.classList.toggle("selected", isActive);
+      entryButton.setAttribute("aria-pressed", String(isActive));
+    });
+    serviceSections.forEach((section) => {
+      section.hidden = section.dataset.serviceSection !== service;
+    });
+  });
+});
 
 renderModeButtons();
 renderActiveMode();
