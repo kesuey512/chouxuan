@@ -537,6 +537,10 @@ textarea:focus {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .payment-method-options {
+    grid-template-columns: 1fr;
+  }
+
   .submission-head {
     flex-direction: column;
   }
@@ -801,6 +805,56 @@ textarea:focus {
   color: var(--muted);
   font-size: 0.84rem;
   line-height: 1.65;
+}
+
+.payment-method-section {
+  display: grid;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.payment-method-section h3 {
+  font-family: inherit;
+  font-size: 0.96rem;
+  font-weight: 800;
+}
+
+.payment-method-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.payment-method-button {
+  display: grid;
+  gap: 6px;
+  min-height: 92px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 13px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.payment-method-button span {
+  font-weight: 800;
+}
+
+.payment-method-button small {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.payment-method-button:hover,
+.payment-method-button.selected {
+  border-color: rgba(47, 111, 104, 0.5);
+  background: rgba(47, 111, 104, 0.09);
+  box-shadow: 0 8px 18px rgba(33, 39, 46, 0.08);
+  transform: translateY(-1px);
 }
 
 .choice-badge {

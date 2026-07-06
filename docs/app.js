@@ -134,62 +134,14 @@ const homePrompt = document.getElementById("homePrompt");
 const serviceEntryPanel = document.querySelector(".service-entry-panel");
 const serviceEntryButtons = document.querySelectorAll("[data-service-entry]");
 const serviceSections = document.querySelectorAll("[data-service-section]");
+const paymentMethodSection = document.getElementById("paymentMethodSection");
+const paymentMethodButtons = document.querySelectorAll("[data-payment-method]");
 
 let activeMode = MODE_TEMPLATES[0];
 let latestFormattedResult = "";
+let selectedPaymentMethod = "";
 
 let activeFlowPath = ["open_only"];
-
-const PAYMENT_METHOD_NOTICE = "如果本次仅能用一种支付方式的话，则此选择无效。只要是在我这里买了全程一条龙的，票价都只用付实时汇率。";
-
-const PAYMENT_METHOD_HINTS = {
-  convenience: "中选后可以选择要不要付款，也可以选择只付某一天，中选后收取汇率+0.0015。",
-  creditCard: "中选后直接扣款，在我抽完后需要先拍下票价链接，中选后收取汇率+0.001。"
-};
-
-const OPEN_AND_LOTTERY_OPTIONS = [
-  { id: "has_wvs", label: "\u6709wvs\u8d26\u53f7", modeId: "wvs_all" },
-  { id: "no_wvs", label: "\u6ca1\u6709wvs\u8d26\u53f7", modeId: "fanclub_all" }
-];
-
-const LOTTERY_ONLY_OPTIONS = [
-  {
-    id: "global_member_branch",
-    label: "global\u4f1a\u5458",
-    children: [
-      { id: "global_round", label: "\u4e00\u8f6e\u62bd\u9009", modeId: "global_member" },
-      { id: "global_upgrade", label: "\u5347p", modeId: "global_upgrade" }
-    ]
-  },
-  {
-    id: "wvs_jp_branch",
-    label: "wvs\u65e5\u5496\u4f1a\u5458",
-    children: [
-      { id: "wvs_round", label: "\u4e00\u8f6e\u62bd\u9009", modeId: "wvs_lottery" },
-      { id: "wvs_upgrade", label: "\u5347p", modeId: "wvs_official_lottery" }
-    ]
-  },
-  { id: "other_member_branch", label: "\u5176\u4ed6\u4f1a\u5458", modeId: "fanclub_lottery" }
-];
-
-function createPaymentOptions(children) {
-  return [
-    {
-      id: "convenience_payment",
-      label: "\u4fbf\u5229\u5e97\u652f\u4ed8",
-      hint: PAYMENT_METHOD_HINTS.convenience,
-      paymentMethod: "\u4fbf\u5229\u5e97\u652f\u4ed8",
-      children
-    },
-    {
-      id: "credit_card_payment",
-      label: "\u4fe1\u7528\u5361\u652f\u4ed8",
-      hint: PAYMENT_METHOD_HINTS.creditCard,
-      paymentMethod: "\u4fe1\u7528\u5361\u652f\u4ed8",
-      children
-    }
-  ];
-}
 
 const FLOW_TREE = [
   {
@@ -202,13 +154,34 @@ const FLOW_TREE = [
     id: "open_and_lottery",
     label: "\u9700\u8981\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458+\u62bd\u9009",
     hint: "\u4ece\u96f6\u51c6\u5907\uff0c\u540c\u65f6\u53c2\u52a0\u62bd\u9009",
-    children: createPaymentOptions(OPEN_AND_LOTTERY_OPTIONS)
+    children: [
+      { id: "has_wvs", label: "\u6709wvs\u8d26\u53f7", modeId: "wvs_all" },
+      { id: "no_wvs", label: "\u6ca1\u6709wvs\u8d26\u53f7", modeId: "fanclub_all" }
+    ]
   },
   {
     id: "lottery_only",
     label: "\u4ec5\u9700\u62bd\u9009",
     hint: "\u5df2\u6709\u8d26\u53f7\u6216\u4f1a\u5458\uff0c\u53ea\u8865\u62bd\u9009\u4fe1\u606f",
-    children: createPaymentOptions(LOTTERY_ONLY_OPTIONS)
+    children: [
+      {
+        id: "global_member_branch",
+        label: "global\u4f1a\u5458",
+        children: [
+          { id: "global_round", label: "\u4e00\u8f6e\u62bd\u9009", modeId: "global_member" },
+          { id: "global_upgrade", label: "\u5347p", modeId: "global_upgrade" }
+        ]
+      },
+      {
+        id: "wvs_jp_branch",
+        label: "wvs\u65e5\u5496\u4f1a\u5458",
+        children: [
+          { id: "wvs_round", label: "\u4e00\u8f6e\u62bd\u9009", modeId: "wvs_lottery" },
+          { id: "wvs_upgrade", label: "\u5347p", modeId: "wvs_official_lottery" }
+        ]
+      },
+      { id: "other_member_branch", label: "\u5176\u4ed6\u4f1a\u5458", modeId: "fanclub_lottery" }
+    ]
   },
   {
     id: "wvs_special_direct",
@@ -492,12 +465,6 @@ function renderChoiceLevel(level, index) {
   });
 
   levelEl.appendChild(options);
-  if (level.nodes.some((node) => node.paymentMethod)) {
-    const note = document.createElement("div");
-    note.className = "choice-note";
-    note.textContent = PAYMENT_METHOD_NOTICE;
-    levelEl.appendChild(note);
-  }
   return levelEl;
 }
 
@@ -577,6 +544,17 @@ function renderActiveMode() {
   modeTitle.textContent = `${activeGroup ? activeGroup.label : activeMode.category} / ${activeMode.name}`;
   modeSubtitle.textContent = activeMode.subtitle;
   modeNote.textContent = activeMode.note;
+  const needsPaymentMethod = activeMode.group === "open_and_lottery" || activeMode.group === "lottery_only";
+  if (paymentMethodSection) {
+    paymentMethodSection.hidden = !needsPaymentMethod;
+  }
+  if (!needsPaymentMethod) {
+    selectedPaymentMethod = "";
+    paymentMethodButtons.forEach((button) => {
+      button.classList.remove("selected");
+      button.setAttribute("aria-pressed", "false");
+    });
+  }
   formFields.innerHTML = "";
   activeMode.fields.forEach((fieldId) => {
     formFields.appendChild(createField(fieldId));
@@ -604,18 +582,7 @@ function getFormData() {
 }
 
 function getSelectedPaymentMethod() {
-  let nodes = FLOW_TREE;
-  for (const id of activeFlowPath) {
-    const node = nodes.find((item) => item.id === id);
-    if (!node) {
-      return "";
-    }
-    if (node.paymentMethod) {
-      return node.paymentMethod;
-    }
-    nodes = node.children || [];
-  }
-  return "";
+  return selectedPaymentMethod;
 }
 
 function formatSubmission(mode, data) {
@@ -700,6 +667,11 @@ async function copyResult() {
 collectorForm.addEventListener("submit", submitCurrentForm);
 resetFormButton.addEventListener("click", () => {
   collectorForm.reset();
+  selectedPaymentMethod = "";
+  paymentMethodButtons.forEach((button) => {
+    button.classList.remove("selected");
+    button.setAttribute("aria-pressed", "false");
+  });
   renderActiveMode();
   renderFormattedResult("");
 });
@@ -718,6 +690,18 @@ if (copyWechatButton) {
     }
   });
 }
+
+paymentMethodButtons.forEach((button) => {
+  button.setAttribute("aria-pressed", "false");
+  button.addEventListener("click", () => {
+    selectedPaymentMethod = button.dataset.paymentMethod || "";
+    paymentMethodButtons.forEach((methodButton) => {
+      const isSelected = methodButton === button;
+      methodButton.classList.toggle("selected", isSelected);
+      methodButton.setAttribute("aria-pressed", String(isSelected));
+    });
+  });
+});
 
 serviceEntryButtons.forEach((button) => {
   button.addEventListener("click", () => {
