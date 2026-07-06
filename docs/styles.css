@@ -794,6 +794,15 @@ textarea:focus {
   line-height: 1.45;
 }
 
+.choice-note {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(174, 73, 44, 0.08);
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+
 .choice-badge {
   align-self: start;
   padding: 2px 7px;
