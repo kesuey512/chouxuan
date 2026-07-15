@@ -138,10 +138,35 @@ const paymentMethodSection = document.getElementById("paymentMethodSection");
 const paymentMethodButtons = document.querySelectorAll("[data-payment-method]");
 const depositCategoryButtons = document.querySelectorAll("[data-deposit-category]");
 const depositCategoryContents = document.querySelectorAll("[data-deposit-category-content]");
+const lawsonCustomerButtons = document.querySelectorAll("[data-lawson-customer]");
+const lawsonSeatButtons = document.querySelectorAll("[data-lawson-seat]");
+const lawsonQuantityButtons = document.querySelectorAll("[data-lawson-quantity]");
+const lawsonPriceResult = document.getElementById("lawsonPriceResult");
 
 let activeMode = MODE_TEMPLATES[0];
 let latestFormattedResult = "";
 let selectedPaymentMethod = "";
+let selectedLawsonCustomer = "";
+let selectedLawsonSeat = "";
+let selectedLawsonQuantity = 0;
+
+const LAWSON_CUSTOMER_RATES = {
+  full: 0.0421,
+  standard: 0.0435
+};
+
+const LAWSON_CUSTOMER_LABELS = {
+  full: "全程一条龙",
+  standard: "非全程一条龙"
+};
+
+const LAWSON_SEATS = {
+  s: { label: "S指定席", price: 23000 },
+  a: { label: "A指定席", price: 16500 },
+  welcome: { label: "Welcome席", price: 12800 },
+  balcony: { label: "阳台指定席", price: 33000 },
+  sofa: { label: "沙发席", price: 200000 }
+};
 
 let activeFlowPath = ["open_only"];
 
@@ -720,6 +745,68 @@ depositCategoryButtons.forEach((button) => {
   });
 });
 
+function selectCalculatorButton(buttons, selectedButton) {
+  buttons.forEach((button) => {
+    const isSelected = button === selectedButton;
+    button.classList.toggle("selected", isSelected);
+    button.setAttribute("aria-pressed", String(isSelected));
+  });
+}
+
+function renderLawsonPrice() {
+  if (!lawsonPriceResult || !selectedLawsonCustomer || !selectedLawsonSeat || !selectedLawsonQuantity) {
+    return;
+  }
+
+  const seat = LAWSON_SEATS[selectedLawsonSeat];
+  const rate = LAWSON_CUSTOMER_RATES[selectedLawsonCustomer];
+  const yenTotal = (seat.price + 1100) * selectedLawsonQuantity + 330;
+  const amount = yenTotal * rate;
+  const formattedAmount = amount.toLocaleString("zh-CN", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+
+  lawsonPriceResult.innerHTML = `
+    <span>${LAWSON_CUSTOMER_LABELS[selectedLawsonCustomer]} · ${seat.label} · ${selectedLawsonQuantity}张</span>
+    <strong>${formattedAmount}元</strong>
+    <small>这是本订单需要支付的总金额</small>
+  `;
+}
+
+lawsonCustomerButtons.forEach((button) => {
+  button.setAttribute("aria-pressed", "false");
+  button.addEventListener("click", () => {
+    selectedLawsonCustomer = button.dataset.lawsonCustomer || "";
+    selectCalculatorButton(lawsonCustomerButtons, button);
+    lawsonSeatButtons.forEach((seatButton) => {
+      seatButton.disabled = false;
+    });
+    renderLawsonPrice();
+  });
+});
+
+lawsonSeatButtons.forEach((button) => {
+  button.setAttribute("aria-pressed", "false");
+  button.addEventListener("click", () => {
+    selectedLawsonSeat = button.dataset.lawsonSeat || "";
+    selectCalculatorButton(lawsonSeatButtons, button);
+    lawsonQuantityButtons.forEach((quantityButton) => {
+      quantityButton.disabled = false;
+    });
+    renderLawsonPrice();
+  });
+});
+
+lawsonQuantityButtons.forEach((button) => {
+  button.setAttribute("aria-pressed", "false");
+  button.addEventListener("click", () => {
+    selectedLawsonQuantity = Number(button.dataset.lawsonQuantity || 0);
+    selectCalculatorButton(lawsonQuantityButtons, button);
+    renderLawsonPrice();
+  });
+});
+
 serviceEntryButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const service = button.dataset.serviceEntry;
@@ -741,8 +828,6 @@ serviceEntryButtons.forEach((button) => {
 renderModeButtons();
 renderActiveMode();
 renderFormattedResult("");
-
-
 
 
 
