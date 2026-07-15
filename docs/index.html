@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>信息收集表</title>
-    <link rel="stylesheet" href="./styles.css?v=20260715-4" />
+    <link rel="stylesheet" href="./styles.css?v=20260715-5" />
   </head>
   <body>
     <div class="backdrop"></div>
@@ -119,25 +119,26 @@
           <button class="category-button" type="button" data-deposit-category="ticket-board">ticket board</button>
           <button class="category-button" type="button" data-deposit-category="ofc">ofc</button>
           <button class="category-button" type="button" data-deposit-category="pia">pia</button>
+          <button class="category-button" type="button" data-deposit-category="bigbang-tour">BIGBANG日巡专用</button>
         </div>
 
-        <section class="deposit-category-content" data-deposit-category-content="lawson" hidden>
+        <section class="deposit-category-content" data-deposit-category-content="bigbang-tour" hidden>
           <div class="deposit-content-head">
-            <p class="deposit-kicker">罗森代入金</p>
+            <p class="deposit-kicker">BIGBANG日巡专用</p>
             <h3>今日代付价格</h3>
             <div class="deposit-live-notice">每日汇率不同，价格也是实时更新的。因为本次入金只能现金付款，所以没办法按照一个订单增加固定金额。这个价格已经是最优惠的了，感谢理解。</div>
             <p>点击下方按钮，查看本次需要支付的金额。</p>
           </div>
 
-          <section class="lawson-calculator" aria-label="罗森代付价格计算器">
+          <section class="bigbang-calculator" aria-label="BIGBANG日巡专用代付价格计算器">
             <div class="calculator-step">
               <div class="calculator-step-head">
                 <span>1</span>
                 <h4>是否为全程一条龙客户？</h4>
               </div>
               <div class="calculator-options two-column">
-                <button class="calculator-option" type="button" data-lawson-customer="full">是，全程一条龙</button>
-                <button class="calculator-option" type="button" data-lawson-customer="standard">否，非全程一条龙</button>
+                <button class="calculator-option" type="button" data-bigbang-customer="full">是，全程一条龙</button>
+                <button class="calculator-option" type="button" data-bigbang-customer="standard">否，非全程一条龙</button>
               </div>
             </div>
 
@@ -147,14 +148,14 @@
                 <h4>选择席位</h4>
               </div>
               <div class="calculator-options seat-options">
-                <button class="calculator-option" type="button" data-lawson-seat="s" disabled>S指定席</button>
-                <button class="calculator-option" type="button" data-lawson-seat="a" disabled>A指定席</button>
-                <button class="calculator-option" type="button" data-lawson-seat="welcome" disabled>Welcome席</button>
-                <button class="calculator-option" type="button" data-lawson-seat="balcony" disabled>
+                <button class="calculator-option" type="button" data-bigbang-seat="s" disabled>S指定席</button>
+                <button class="calculator-option" type="button" data-bigbang-seat="a" disabled>A指定席</button>
+                <button class="calculator-option" type="button" data-bigbang-seat="welcome" disabled>Welcome席</button>
+                <button class="calculator-option" type="button" data-bigbang-seat="balcony" disabled>
                   <span>阳台指定席</span>
                   <small>仅名古屋、东京部分公演</small>
                 </button>
-                <button class="calculator-option" type="button" data-lawson-seat="sofa" disabled>
+                <button class="calculator-option" type="button" data-bigbang-seat="sofa" disabled>
                   <span>沙发席</span>
                   <small>仅东京公演，1组最多4人入场</small>
                 </button>
@@ -167,14 +168,14 @@
                 <h4>选择数量（每个订单最多4张）</h4>
               </div>
               <div class="calculator-options quantity-options">
-                <button class="calculator-option" type="button" data-lawson-quantity="1" disabled>1张</button>
-                <button class="calculator-option" type="button" data-lawson-quantity="2" disabled>2张</button>
-                <button class="calculator-option" type="button" data-lawson-quantity="3" disabled>3张</button>
-                <button class="calculator-option" type="button" data-lawson-quantity="4" disabled>4张</button>
+                <button class="calculator-option" type="button" data-bigbang-quantity="1" disabled>1张</button>
+                <button class="calculator-option" type="button" data-bigbang-quantity="2" disabled>2张</button>
+                <button class="calculator-option" type="button" data-bigbang-quantity="3" disabled>3张</button>
+                <button class="calculator-option" type="button" data-bigbang-quantity="4" disabled>4张</button>
               </div>
             </div>
 
-            <div id="lawsonPriceResult" class="lawson-price-result" aria-live="polite">
+            <div id="bigbangPriceResult" class="bigbang-price-result" aria-live="polite">
               <span>完成以上选择后，这里会显示需要支付的金额。</span>
             </div>
           </section>
@@ -189,10 +190,13 @@
 
           <div class="deposit-form-notice">
             <strong>不管选择哪种代付流程，都要在拍下闲鱼订单后填写收集表</strong>
-            <img src="./assets/lawson-deposit-form-qr.png" alt="罗森代入金WPS收集表二维码" loading="lazy" />
+            <img src="./assets/bigbang-tour-deposit-form-qr.png" alt="BIGBANG日巡专用WPS收集表二维码" loading="lazy" />
           </div>
         </section>
 
+        <div class="deposit-category-content notice-box" data-deposit-category-content="lawson" hidden>
+          罗森代入金相关内容正在整理中。
+        </div>
         <div class="deposit-category-content notice-box" data-deposit-category-content="ticket-board" hidden>
           ticket board 代入金相关内容正在整理中。
         </div>
@@ -216,6 +220,6 @@
     </main>
 
     <script src="./pinyin-map.js?v=20260701-1"></script>
-    <script src="./app.js?v=20260715-4"></script>
+    <script src="./app.js?v=20260715-5"></script>
   </body>
 </html>

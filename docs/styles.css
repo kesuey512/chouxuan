@@ -162,7 +162,7 @@ h3 {
 
 .category-button-list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 14px;
 }
@@ -227,7 +227,7 @@ h3 {
   font-size: 1.35rem;
 }
 
-.lawson-calculator,
+.bigbang-calculator,
 .deposit-process,
 .deposit-form-notice {
   padding: 18px;
@@ -241,7 +241,7 @@ h3 {
   margin-top: 14px;
 }
 
-.lawson-calculator {
+.bigbang-calculator {
   display: grid;
   gap: 18px;
 }
@@ -322,7 +322,7 @@ h3 {
   opacity: 0.4;
 }
 
-.lawson-price-result {
+.bigbang-price-result {
   display: grid;
   gap: 5px;
   min-height: 96px;
@@ -335,13 +335,13 @@ h3 {
   text-align: center;
 }
 
-.lawson-price-result strong {
+.bigbang-price-result strong {
   color: var(--accent-dark);
   font-family: "Songti SC", "Noto Serif CJK SC", serif;
   font-size: clamp(1.8rem, 4vw, 2.6rem);
 }
 
-.lawson-price-result small {
+.bigbang-price-result small {
   color: var(--muted);
   font-size: 0.82rem;
 }
@@ -730,6 +730,10 @@ textarea:focus {
 
   .category-button-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .category-button-list .category-button:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 
   .deposit-form-notice {

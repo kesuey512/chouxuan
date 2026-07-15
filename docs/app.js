@@ -138,29 +138,29 @@ const paymentMethodSection = document.getElementById("paymentMethodSection");
 const paymentMethodButtons = document.querySelectorAll("[data-payment-method]");
 const depositCategoryButtons = document.querySelectorAll("[data-deposit-category]");
 const depositCategoryContents = document.querySelectorAll("[data-deposit-category-content]");
-const lawsonCustomerButtons = document.querySelectorAll("[data-lawson-customer]");
-const lawsonSeatButtons = document.querySelectorAll("[data-lawson-seat]");
-const lawsonQuantityButtons = document.querySelectorAll("[data-lawson-quantity]");
-const lawsonPriceResult = document.getElementById("lawsonPriceResult");
+const bigbangCustomerButtons = document.querySelectorAll("[data-bigbang-customer]");
+const bigbangSeatButtons = document.querySelectorAll("[data-bigbang-seat]");
+const bigbangQuantityButtons = document.querySelectorAll("[data-bigbang-quantity]");
+const bigbangPriceResult = document.getElementById("bigbangPriceResult");
 
 let activeMode = MODE_TEMPLATES[0];
 let latestFormattedResult = "";
 let selectedPaymentMethod = "";
-let selectedLawsonCustomer = "";
-let selectedLawsonSeat = "";
-let selectedLawsonQuantity = 0;
+let selectedBigbangCustomer = "";
+let selectedBigbangSeat = "";
+let selectedBigbangQuantity = 0;
 
-const LAWSON_CUSTOMER_RATES = {
+const BIGBANG_CUSTOMER_RATES = {
   full: 0.0421,
   standard: 0.0435
 };
 
-const LAWSON_CUSTOMER_LABELS = {
+const BIGBANG_CUSTOMER_LABELS = {
   full: "全程一条龙",
   standard: "非全程一条龙"
 };
 
-const LAWSON_SEATS = {
+const BIGBANG_SEATS = {
   s: { label: "S指定席", price: 23000 },
   a: { label: "A指定席", price: 16500 },
   welcome: { label: "Welcome席", price: 12800 },
@@ -753,57 +753,57 @@ function selectCalculatorButton(buttons, selectedButton) {
   });
 }
 
-function renderLawsonPrice() {
-  if (!lawsonPriceResult || !selectedLawsonCustomer || !selectedLawsonSeat || !selectedLawsonQuantity) {
+function renderBigbangPrice() {
+  if (!bigbangPriceResult || !selectedBigbangCustomer || !selectedBigbangSeat || !selectedBigbangQuantity) {
     return;
   }
 
-  const seat = LAWSON_SEATS[selectedLawsonSeat];
-  const rate = LAWSON_CUSTOMER_RATES[selectedLawsonCustomer];
-  const yenTotal = (seat.price + 1100) * selectedLawsonQuantity + 330;
+  const seat = BIGBANG_SEATS[selectedBigbangSeat];
+  const rate = BIGBANG_CUSTOMER_RATES[selectedBigbangCustomer];
+  const yenTotal = (seat.price + 1100) * selectedBigbangQuantity + 330;
   const amount = yenTotal * rate;
   const formattedAmount = amount.toLocaleString("zh-CN", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   });
 
-  lawsonPriceResult.innerHTML = `
-    <span>${LAWSON_CUSTOMER_LABELS[selectedLawsonCustomer]} · ${seat.label} · ${selectedLawsonQuantity}张</span>
+  bigbangPriceResult.innerHTML = `
+    <span>${BIGBANG_CUSTOMER_LABELS[selectedBigbangCustomer]} · ${seat.label} · ${selectedBigbangQuantity}张</span>
     <strong>${formattedAmount}元</strong>
     <small>这是本订单需要支付的总金额</small>
   `;
 }
 
-lawsonCustomerButtons.forEach((button) => {
+bigbangCustomerButtons.forEach((button) => {
   button.setAttribute("aria-pressed", "false");
   button.addEventListener("click", () => {
-    selectedLawsonCustomer = button.dataset.lawsonCustomer || "";
-    selectCalculatorButton(lawsonCustomerButtons, button);
-    lawsonSeatButtons.forEach((seatButton) => {
+    selectedBigbangCustomer = button.dataset.bigbangCustomer || "";
+    selectCalculatorButton(bigbangCustomerButtons, button);
+    bigbangSeatButtons.forEach((seatButton) => {
       seatButton.disabled = false;
     });
-    renderLawsonPrice();
+    renderBigbangPrice();
   });
 });
 
-lawsonSeatButtons.forEach((button) => {
+bigbangSeatButtons.forEach((button) => {
   button.setAttribute("aria-pressed", "false");
   button.addEventListener("click", () => {
-    selectedLawsonSeat = button.dataset.lawsonSeat || "";
-    selectCalculatorButton(lawsonSeatButtons, button);
-    lawsonQuantityButtons.forEach((quantityButton) => {
+    selectedBigbangSeat = button.dataset.bigbangSeat || "";
+    selectCalculatorButton(bigbangSeatButtons, button);
+    bigbangQuantityButtons.forEach((quantityButton) => {
       quantityButton.disabled = false;
     });
-    renderLawsonPrice();
+    renderBigbangPrice();
   });
 });
 
-lawsonQuantityButtons.forEach((button) => {
+bigbangQuantityButtons.forEach((button) => {
   button.setAttribute("aria-pressed", "false");
   button.addEventListener("click", () => {
-    selectedLawsonQuantity = Number(button.dataset.lawsonQuantity || 0);
-    selectCalculatorButton(lawsonQuantityButtons, button);
-    renderLawsonPrice();
+    selectedBigbangQuantity = Number(button.dataset.bigbangQuantity || 0);
+    selectCalculatorButton(bigbangQuantityButtons, button);
+    renderBigbangPrice();
   });
 });
 
@@ -828,7 +828,6 @@ serviceEntryButtons.forEach((button) => {
 renderModeButtons();
 renderActiveMode();
 renderFormattedResult("");
-
 
 
 
