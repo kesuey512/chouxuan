@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>信息收集表</title>
-    <link rel="stylesheet" href="./styles.css?v=20260715-1" />
+    <link rel="stylesheet" href="./styles.css?v=20260715-2" />
   </head>
   <body>
     <div class="backdrop"></div>
@@ -127,31 +127,38 @@
             <h3>今日代付价格</h3>
           </div>
 
+          <div class="price-calculation-note">
+            <strong>费用计算说明</strong>
+            <p>每张票另加1,100日元手续费，每个订单另加330日元手续费；每个订单最多购买4张票。</p>
+            <p>单张展示价计算方式：（票面原价 + 1,100日元 + 330日元）× 对应汇率。</p>
+            <p>同一订单购买2–4张时：（（票面原价 + 1,100日元）× 张数 + 330日元）× 对应汇率，330日元订单手续费只收一次。</p>
+          </div>
+
           <article class="price-group">
             <div class="price-group-head">
               <h4>全程一条龙需付费用</h4>
-              <p>均为单张价格，多张请按张数翻倍。</p>
+              <p>汇率按0.042计算，以下均为单张价格。</p>
             </div>
             <div class="seat-price-grid">
-              <div class="seat-price"><span>S席</span><strong>待更新</strong></div>
-              <div class="seat-price"><span>A席</span><strong>待更新</strong></div>
-              <div class="seat-price"><span>Welcome席</span><strong>待更新</strong></div>
-              <div class="seat-price"><span>阳台席</span><strong>待更新</strong></div>
-              <div class="seat-price"><span>沙发席</span><strong>待更新</strong></div>
+              <div class="seat-price"><span>S指定席</span><strong>1,026.06元</strong><small>原价23,000日元</small></div>
+              <div class="seat-price"><span>A指定席</span><strong>753.06元</strong><small>原价16,500日元</small></div>
+              <div class="seat-price"><span>Welcome席</span><strong>597.66元</strong><small>原价12,800日元</small></div>
+              <div class="seat-price"><span>阳台指定席</span><strong>1,446.06元</strong><small>原价33,000日元，仅名古屋、东京部分公演</small></div>
+              <div class="seat-price"><span>沙发席</span><strong>8,460.06元</strong><small>原价200,000日元，仅东京公演，1组最多4人入场</small></div>
             </div>
           </article>
 
           <article class="price-group">
             <div class="price-group-head">
               <h4>非全程一条龙需付费用</h4>
-              <p>均为单张价格，多张请按张数翻倍。</p>
+              <p>汇率按0.0435计算，以下均为单张价格。</p>
             </div>
             <div class="seat-price-grid">
-              <div class="seat-price"><span>S席</span><strong>待更新</strong></div>
-              <div class="seat-price"><span>A席</span><strong>待更新</strong></div>
-              <div class="seat-price"><span>Welcome席</span><strong>待更新</strong></div>
-              <div class="seat-price"><span>阳台席</span><strong>待更新</strong></div>
-              <div class="seat-price"><span>沙发席</span><strong>待更新</strong></div>
+              <div class="seat-price"><span>S指定席</span><strong>1,062.71元</strong><small>原价23,000日元</small></div>
+              <div class="seat-price"><span>A指定席</span><strong>779.96元</strong><small>原价16,500日元</small></div>
+              <div class="seat-price"><span>Welcome席</span><strong>619.01元</strong><small>原价12,800日元</small></div>
+              <div class="seat-price"><span>阳台指定席</span><strong>1,497.71元</strong><small>原价33,000日元，仅名古屋、东京部分公演</small></div>
+              <div class="seat-price"><span>沙发席</span><strong>8,762.21元</strong><small>原价200,000日元，仅东京公演，1组最多4人入场</small></div>
             </div>
           </article>
 
@@ -195,6 +202,4 @@
     <script src="./app.js?v=20260715-1"></script>
   </body>
 </html>
-
-
 

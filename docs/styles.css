@@ -212,6 +212,24 @@ h3 {
   font-size: 1.35rem;
 }
 
+.price-calculation-note {
+  margin-bottom: 14px;
+  padding: 15px 17px;
+  border-left: 4px solid var(--secondary);
+  border-radius: 8px;
+  background: rgba(54, 91, 86, 0.08);
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.price-calculation-note strong {
+  color: var(--ink);
+}
+
+.price-calculation-note p {
+  margin: 5px 0 0;
+}
+
 .price-group,
 .deposit-process,
 .deposit-form-notice {
@@ -264,6 +282,12 @@ h3 {
 .seat-price strong {
   color: var(--secondary);
   font-size: 0.98rem;
+}
+
+.seat-price small {
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.55;
 }
 
 .deposit-process ol {
