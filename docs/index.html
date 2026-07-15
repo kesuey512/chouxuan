@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>信息收集表</title>
-    <link rel="stylesheet" href="./styles.css?v=20260706-2" />
+    <link rel="stylesheet" href="./styles.css?v=20260715-1" />
   </head>
   <body>
     <div class="backdrop"></div>
@@ -115,12 +115,69 @@
           </div>
         </div>
         <div class="category-button-list">
-          <button class="category-button" type="button">罗森</button>
-          <button class="category-button" type="button">ticket board</button>
-          <button class="category-button" type="button">ofc</button>
-          <button class="category-button" type="button">pia</button>
+          <button class="category-button" type="button" data-deposit-category="lawson">罗森</button>
+          <button class="category-button" type="button" data-deposit-category="ticket-board">ticket board</button>
+          <button class="category-button" type="button" data-deposit-category="ofc">ofc</button>
+          <button class="category-button" type="button" data-deposit-category="pia">pia</button>
         </div>
-        <div class="notice-box">代入金相关内容正在整理中，当前可以先通过微信或闲鱼联系我。</div>
+
+        <section class="deposit-category-content" data-deposit-category-content="lawson" hidden>
+          <div class="deposit-content-head">
+            <p class="deposit-kicker">罗森代入金</p>
+            <h3>今日代付价格</h3>
+          </div>
+
+          <article class="price-group">
+            <div class="price-group-head">
+              <h4>全程一条龙需付费用</h4>
+              <p>均为单张价格，多张请按张数翻倍。</p>
+            </div>
+            <div class="seat-price-grid">
+              <div class="seat-price"><span>S席</span><strong>待更新</strong></div>
+              <div class="seat-price"><span>A席</span><strong>待更新</strong></div>
+              <div class="seat-price"><span>Welcome席</span><strong>待更新</strong></div>
+              <div class="seat-price"><span>阳台席</span><strong>待更新</strong></div>
+              <div class="seat-price"><span>沙发席</span><strong>待更新</strong></div>
+            </div>
+          </article>
+
+          <article class="price-group">
+            <div class="price-group-head">
+              <h4>非全程一条龙需付费用</h4>
+              <p>均为单张价格，多张请按张数翻倍。</p>
+            </div>
+            <div class="seat-price-grid">
+              <div class="seat-price"><span>S席</span><strong>待更新</strong></div>
+              <div class="seat-price"><span>A席</span><strong>待更新</strong></div>
+              <div class="seat-price"><span>Welcome席</span><strong>待更新</strong></div>
+              <div class="seat-price"><span>阳台席</span><strong>待更新</strong></div>
+              <div class="seat-price"><span>沙发席</span><strong>待更新</strong></div>
+            </div>
+          </article>
+
+          <article class="deposit-process">
+            <h3>代付流程</h3>
+            <ol>
+              <li>去闲鱼拍一个0.01元的链接，票价以转账的形式给我。</li>
+              <li>去闲鱼拍票价链接，除此之外还需要支付票价 × 1.6%的手续费。</li>
+            </ol>
+          </article>
+
+          <div class="deposit-form-notice">
+            <strong>在拍完链接之后，请务必填写以下链接：</strong>
+            <span>填写链接待补充</span>
+          </div>
+        </section>
+
+        <div class="deposit-category-content notice-box" data-deposit-category-content="ticket-board" hidden>
+          ticket board 代入金相关内容正在整理中。
+        </div>
+        <div class="deposit-category-content notice-box" data-deposit-category-content="ofc" hidden>
+          ofc 代入金相关内容正在整理中。
+        </div>
+        <div class="deposit-category-content notice-box" data-deposit-category-content="pia" hidden>
+          pia 代入金相关内容正在整理中。
+        </div>
       </section>
 
       <section class="panel service-section service-placeholder" data-service-section="tour-guide" hidden>
@@ -135,10 +192,9 @@
     </main>
 
     <script src="./pinyin-map.js?v=20260701-1"></script>
-    <script src="./app.js?v=20260706-2"></script>
+    <script src="./app.js?v=20260715-1"></script>
   </body>
 </html>
-
 
 
 

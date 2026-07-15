@@ -185,6 +185,119 @@ h3 {
   transform: translateY(-1px);
 }
 
+.category-button.selected {
+  border-color: rgba(174, 73, 44, 0.46);
+  background: rgba(174, 73, 44, 0.09);
+  color: var(--accent-dark);
+}
+
+.deposit-category-content {
+  margin-top: 18px;
+}
+
+.deposit-content-head {
+  margin-bottom: 16px;
+}
+
+.deposit-kicker {
+  margin: 0 0 5px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.deposit-content-head h3,
+.deposit-process h3 {
+  font-size: 1.35rem;
+}
+
+.price-group,
+.deposit-process,
+.deposit-form-notice {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.price-group + .price-group,
+.deposit-process,
+.deposit-form-notice {
+  margin-top: 14px;
+}
+
+.price-group-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.price-group-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.seat-price-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.seat-price {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  padding: 13px;
+  border-radius: 8px;
+  background: rgba(54, 91, 86, 0.07);
+}
+
+.seat-price span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.seat-price strong {
+  color: var(--secondary);
+  font-size: 0.98rem;
+}
+
+.deposit-process ol {
+  display: grid;
+  gap: 12px;
+  margin: 14px 0 0;
+  padding-left: 1.6rem;
+  line-height: 1.75;
+}
+
+.deposit-process li::marker {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.deposit-form-notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-color: rgba(174, 73, 44, 0.24);
+  background: rgba(174, 73, 44, 0.07);
+  line-height: 1.65;
+}
+
+.deposit-form-notice span {
+  flex: 0 0 auto;
+  padding: 8px 11px;
+  border-radius: 8px;
+  background: rgba(29, 26, 22, 0.06);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
 .layout {
   display: grid;
   grid-template-columns: 340px minmax(0, 1fr);
@@ -535,6 +648,20 @@ textarea:focus {
 
   .category-button-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .price-group-head,
+  .deposit-form-notice {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .seat-price-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seat-price:last-child {
+    grid-column: 1 / -1;
   }
 
   .payment-method-options {

@@ -136,6 +136,8 @@ const serviceEntryButtons = document.querySelectorAll("[data-service-entry]");
 const serviceSections = document.querySelectorAll("[data-service-section]");
 const paymentMethodSection = document.getElementById("paymentMethodSection");
 const paymentMethodButtons = document.querySelectorAll("[data-payment-method]");
+const depositCategoryButtons = document.querySelectorAll("[data-deposit-category]");
+const depositCategoryContents = document.querySelectorAll("[data-deposit-category-content]");
 
 let activeMode = MODE_TEMPLATES[0];
 let latestFormattedResult = "";
@@ -703,6 +705,21 @@ paymentMethodButtons.forEach((button) => {
   });
 });
 
+depositCategoryButtons.forEach((button) => {
+  button.setAttribute("aria-pressed", "false");
+  button.addEventListener("click", () => {
+    const selectedCategory = button.dataset.depositCategory;
+    depositCategoryButtons.forEach((categoryButton) => {
+      const isSelected = categoryButton === button;
+      categoryButton.classList.toggle("selected", isSelected);
+      categoryButton.setAttribute("aria-pressed", String(isSelected));
+    });
+    depositCategoryContents.forEach((content) => {
+      content.hidden = content.dataset.depositCategoryContent !== selectedCategory;
+    });
+  });
+});
+
 serviceEntryButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const service = button.dataset.serviceEntry;
@@ -724,7 +741,6 @@ serviceEntryButtons.forEach((button) => {
 renderModeButtons();
 renderActiveMode();
 renderFormattedResult("");
-
 
 
 
