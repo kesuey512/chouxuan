@@ -145,7 +145,6 @@ const depositCategoryButtons = document.querySelectorAll("[data-deposit-category
 const depositCategoryContents = document.querySelectorAll("[data-deposit-category-content]");
 const bigbangCustomerButtons = document.querySelectorAll("[data-bigbang-customer]");
 const bigbangSeatButtons = document.querySelectorAll("[data-bigbang-seat]");
-const bigbangQuantityButtons = document.querySelectorAll("[data-bigbang-quantity]");
 const bigbangPriceResult = document.getElementById("bigbangPriceResult");
 
 let activeMode = MODE_TEMPLATES[0];
@@ -153,7 +152,6 @@ let latestFormattedResult = "";
 let selectedPaymentMethod = "";
 let selectedBigbangCustomer = "";
 let selectedBigbangSeat = "";
-let selectedBigbangQuantity = 0;
 
 const BIGBANG_CUSTOMER_RATES = {
   full: 0.0422,
@@ -774,13 +772,13 @@ function selectCalculatorButton(buttons, selectedButton) {
 }
 
 function renderBigbangPrice() {
-  if (!bigbangPriceResult || !selectedBigbangCustomer || !selectedBigbangSeat || !selectedBigbangQuantity) {
+  if (!bigbangPriceResult || !selectedBigbangCustomer || !selectedBigbangSeat) {
     return;
   }
 
   const seat = BIGBANG_SEATS[selectedBigbangSeat];
   const rate = BIGBANG_CUSTOMER_RATES[selectedBigbangCustomer];
-  const yenTotal = (seat.price + 1100) * selectedBigbangQuantity + 330;
+  const yenTotal = seat.price + 1100 + 330;
   const amount = yenTotal * rate;
   const formattedAmount = amount.toLocaleString("zh-CN", {
     minimumFractionDigits: 2,
@@ -788,9 +786,9 @@ function renderBigbangPrice() {
   });
 
   bigbangPriceResult.innerHTML = `
-    <span>${BIGBANG_CUSTOMER_LABELS[selectedBigbangCustomer]} · ${seat.label} · ${selectedBigbangQuantity}张</span>
+    <span>${BIGBANG_CUSTOMER_LABELS[selectedBigbangCustomer]} · ${seat.label} · 1张</span>
     <strong>${formattedAmount}元</strong>
-    <small>这是本订单需要支付的总金额</small>
+    <small>这是一张票需要支付的金额</small>
   `;
 }
 
@@ -811,18 +809,6 @@ bigbangSeatButtons.forEach((button) => {
   button.addEventListener("click", () => {
     selectedBigbangSeat = button.dataset.bigbangSeat || "";
     selectCalculatorButton(bigbangSeatButtons, button);
-    bigbangQuantityButtons.forEach((quantityButton) => {
-      quantityButton.disabled = false;
-    });
-    renderBigbangPrice();
-  });
-});
-
-bigbangQuantityButtons.forEach((button) => {
-  button.setAttribute("aria-pressed", "false");
-  button.addEventListener("click", () => {
-    selectedBigbangQuantity = Number(button.dataset.bigbangQuantity || 0);
-    selectCalculatorButton(bigbangQuantityButtons, button);
     renderBigbangPrice();
   });
 });
@@ -848,7 +834,6 @@ serviceEntryButtons.forEach((button) => {
 renderModeButtons();
 renderActiveMode();
 renderFormattedResult("");
-
 
 
 

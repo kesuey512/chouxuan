@@ -282,10 +282,6 @@ h3 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
-.quantity-options {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
 .calculator-option {
   display: grid;
   place-content: center;
@@ -749,8 +745,7 @@ textarea:focus {
     grid-column: 1 / -1;
   }
 
-  .calculator-options.two-column,
-  .quantity-options {
+  .calculator-options.two-column {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
