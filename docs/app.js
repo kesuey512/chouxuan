@@ -81,6 +81,7 @@ const FIELD_LIBRARY = {
   memberEmail: { label: "\u4f1a\u5458\u90ae\u7bb1", type: "email", placeholder: "\u4f1a\u5458\u767b\u5f55\u90ae\u7bb1" },
   memberPassword: { label: "\u4f1a\u5458\u5bc6\u7801", type: "text", placeholder: "\u4f1a\u5458\u767b\u5f55\u5bc6\u7801" },
   memberNumber: { label: "\u4f1a\u5458\u53f7", type: "text", placeholder: "\u4f1a\u5458\u7f16\u53f7" },
+  xianyuId: { label: "\u95f2\u9c7cID", type: "text", placeholder: "\u8bf7\u8f93\u5165\u95f2\u9c7cID" },
   wvsEmail: { label: "wvs\u8d26\u53f7\uff08\u90ae\u7bb1\uff09", type: "email", placeholder: "wvs \u767b\u5f55\u90ae\u7bb1" },
   wvsPassword: { label: "wvs\u5bc6\u7801", type: "text", placeholder: "wvs \u767b\u5f55\u5bc6\u7801" },
   address: { label: "\u5730\u5740", type: "textarea", placeholder: "\u4f8b\u5982\uff1a\u586b\u5199\u5230\u5e02\u5373\u53ef" },
@@ -88,6 +89,7 @@ const FIELD_LIBRARY = {
   wvsJpAddress: { label: "\u65e5\u672c\u5730\u5740", type: "textarea", placeholder: "\u586b\u5199\u4e0e\u65e5\u5496\u5b98\u7f51\u4e00\u81f4\u7684\u5185\u5bb9" },
   memberInfoAddress: { label: "\u65e5\u672c\u5730\u5740", type: "textarea", placeholder: "\u4e0e\u4f1a\u5458\u4fe1\u606f\u4e00\u81f4" },
   lotteryInfo: { label: "\u62bd\u9009\u4fe1\u606f", type: "textarea", placeholder: "\u4f8b\u5982\uff1a6.24 \u6307\u5b9a\u5e2d \u4e00\u5f20" },
+  bigbangSecondRoundLotteryInfo: { label: "\u62bd\u9009\u4fe1\u606f", type: "textarea", placeholder: "\u7b2c\u4e00\u5fd7\u613f\uff1a\n\u7b2c\u4e8c\u5fd7\u613f\uff1a" },
   reservationNumber: { label: "\u9884\u7ea6\u756a\u53f7", type: "text", placeholder: "\u5982\u679c\u9002\u7528\u518d\u586b\u5199" },
   reservationNumberRequired: { label: "\u9884\u7ea6\u756a\u53f7", type: "text", placeholder: "\u7f57\u68ee\u5347p\u5fc5\u586b", required: true },
   optionalJapanPhone: { label: "\u53ef\u9a8c\u8bc1\u65e5\u672c\u7535\u8bdd", type: "text", placeholder: "\u6ca1\u6709\u53ef\u7559\u7a7a", help: "\u5982\u679c\u4f60\u6709\u53ef\u4ee5\u9a8c\u8bc1\u7684\u65e5\u672c\u7535\u8bdd\u53ef\u4ee5\u53d1\u7ed9\u6211\uff0c\u6ca1\u6709\u7684\u8bdd\u5ffd\u7565\u3002" },
@@ -102,7 +104,8 @@ const MODE_GROUPS = [
   { id: "open_only", label: "\u4ec5\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458", hint: "\u9002\u5408\u53ea\u5f00\u901a\u8d26\u53f7\u6216\u4f1a\u5458" },
   { id: "open_and_lottery", label: "\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458\u5e76\u53c2\u52a0\u62bd\u9009", hint: "\u4ece\u96f6\u51c6\u5907\u8d26\u53f7\u548c\u62bd\u9009\u8d44\u6599" },
   { id: "lottery_only", label: "\u5df2\u6709\u8d26\u53f7\uff0c\u4ec5\u53c2\u52a0\u62bd\u9009", hint: "\u5df2\u6709\u4f1a\u5458\u6216\u8d26\u53f7\uff0c\u53ea\u8865\u62bd\u9009\u4fe1\u606f" },
-  { id: "wvs_special", label: "WVS \u4f1a\u5458\u4e13\u62cd", hint: "\u53ea\u9700\u8981\u5f00\u901a\u65e5\u5496\u4f1a\u5458\uff0c\u4e0d\u9700\u8981\u5e2e\u5fd9\u5b8c\u5584\u5b98\u7f51\u4fe1\u606f" }
+  { id: "wvs_special", label: "WVS \u4f1a\u5458\u4e13\u62cd", hint: "\u53ea\u9700\u8981\u5f00\u901a\u65e5\u5496\u4f1a\u5458\uff0c\u4e0d\u9700\u8981\u5e2e\u5fd9\u5b8c\u5584\u5b98\u7f51\u4fe1\u606f" },
+  { id: "bigbang_second_round", label: "BIGBANG\u65e5\u5de1\u4e8c\u8f6e\u4e13\u7528", hint: "\u4ec5\u9650\u5728\u6211\u8fd9\u91cc\u5df2\u7ecf\u62bd\u8fc7\u4e00\u8f6e\u7684\u4f1a\u5458" }
 ];
 
 const MODE_TEMPLATES = [
@@ -114,7 +117,8 @@ const MODE_TEMPLATES = [
   { id: "wvs_official_lottery", group: "lottery_only", category: "\u5347p", name: "wvs\u65e5\u5496\u4f1a\u5458\u5347p", subtitle: "\u5347p\u5fc5\u586b\u9884\u7ea6\u756a\u53f7", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "manualKanaFull", "gender", "birthday", "wvsEmail", "wvsPassword", "memberNumber", "wvsJpPhone", "wvsJpAddress", "reservationNumberRequired", "lotteryInfo", "wechat"] },
   { id: "global_member", group: "lottery_only", category: "\u62bd\u9009", name: "global\u4f1a\u5458\u4e00\u8f6e\u62bd\u9009", subtitle: "\u4e00\u8f6e\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "birthday", "gender", "globalMemberPhone", "wvsEmail", "wvsPassword", "memberNumber", "address", "lotteryInfo"] },
   { id: "global_upgrade", group: "lottery_only", category: "\u5347p", name: "global\u4f1a\u5458\u5347p", subtitle: "\u5347p\u5fc5\u586b\u9884\u7ea6\u756a\u53f7", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "birthday", "gender", "globalMemberPhone", "wvsEmail", "wvsPassword", "memberNumber", "address", "reservationNumberRequired", "lotteryInfo"] },
-  { id: "wvs_special", group: "wvs_special", category: "\u4e13\u62cd", name: "\u5f00\u901awvs\u65e5\u5496\u4f1a\u5458\u4e13\u62cd", subtitle: "\u4e13\u62cd\u6216\u7279\u6b8a\u6d3b\u52a8", note: "", fields: ["passportEnglishName", "passportChineseName", "kanaFull", "gender", "phone", "wvsEmail", "wvsPassword", "wechat"] }
+  { id: "wvs_special", group: "wvs_special", category: "\u4e13\u62cd", name: "\u5f00\u901awvs\u65e5\u5496\u4f1a\u5458\u4e13\u62cd", subtitle: "\u4e13\u62cd\u6216\u7279\u6b8a\u6d3b\u52a8", note: "", fields: ["passportEnglishName", "passportChineseName", "kanaFull", "gender", "phone", "wvsEmail", "wvsPassword", "wechat"] },
+  { id: "bigbang_second_round", group: "bigbang_second_round", category: "\u62bd\u9009", name: "\u4fe1\u606f\u6536\u96c6", subtitle: "\u4ec5\u9650\u5728\u6211\u8fd9\u91cc\u5df2\u7ecf\u62bd\u8fc7\u4e00\u8f6e\u7684\u4f1a\u5458", note: "\u4ec5\u9650\u5728\u6211\u8fd9\u91cc\u5df2\u7ecf\u62bd\u8fc7\u4e00\u8f6e\u7684\u4f1a\u5458\u586b\u5199\u3002", fields: ["passportEnglishName", "birthday", "memberNumber", "memberEmail", "xianyuId", "bigbangSecondRoundLotteryInfo"], requiredFields: ["passportEnglishName", "birthday", "memberNumber", "memberEmail", "xianyuId", "bigbangSecondRoundLotteryInfo"] }
 ];
 const modeList = document.getElementById("modeList");
 const modeTitle = document.getElementById("modeTitle");
@@ -130,6 +134,7 @@ const resultOutput = document.getElementById("resultOutput");
 const statusOutput = document.getElementById("statusOutput");
 const katakanaPreview = document.getElementById("katakanaPreview");
 const hiraganaPreview = document.getElementById("hiraganaPreview");
+const kanaPreviewSection = document.getElementById("kanaPreviewSection");
 const homePrompt = document.getElementById("homePrompt");
 const serviceEntryPanel = document.querySelector(".service-entry-panel");
 const serviceEntryButtons = document.querySelectorAll("[data-service-entry]");
@@ -152,7 +157,7 @@ let selectedBigbangQuantity = 0;
 
 const BIGBANG_CUSTOMER_RATES = {
   full: 0.0421,
-  standard: 0.0435
+  standard: 0.0436
 };
 
 const BIGBANG_CUSTOMER_LABELS = {
@@ -215,6 +220,12 @@ const FLOW_TREE = [
     label: "\u5f00\u901awvs\u65e5\u5496\u4f1a\u5458\u4e13\u62cd",
     hint: "\u53ea\u9700\u8981\u5f00\u901a\u65e5\u5496\u4f1a\u5458\uff0c\u4e0d\u9700\u8981\u5e2e\u5fd9\u5b8c\u5584\u5b98\u7f51\u4fe1\u606f",
     modeId: "wvs_special"
+  },
+  {
+    id: "bigbang_second_round_direct",
+    label: "BIGBANG\u65e5\u5de1\u4e8c\u8f6e\u4e13\u7528",
+    hint: "\u4ec5\u9650\u5728\u6211\u8fd9\u91cc\u5df2\u7ecf\u62bd\u8fc7\u4e00\u8f6e\u7684\u4f1a\u5458",
+    modeId: "bigbang_second_round"
   }
 ];
 
@@ -540,7 +551,7 @@ function createField(fieldId) {
   if (config.readonly) {
     input.readOnly = true;
   }
-  if (config.required) {
+  if (config.required || activeMode.requiredFields?.includes(fieldId)) {
     input.required = true;
     label.textContent = `${config.label} *`;
   }
@@ -587,13 +598,22 @@ function renderActiveMode() {
     formFields.appendChild(createField(fieldId));
   });
 
+  const showsKanaPreview = activeMode.fields.some((fieldId) =>
+    ["kanaFull", "hiraganaFull", "manualKanaFull"].includes(fieldId)
+  );
+  if (kanaPreviewSection) {
+    kanaPreviewSection.hidden = !showsKanaPreview;
+  }
+
   const chineseNameInput = collectorForm.elements.namedItem("passportChineseName");
   if (chineseNameInput && chineseNameInput.value) {
     setAutoKanaFromChinese(chineseNameInput.value);
   } else {
     katakanaPreview.textContent = "-";
     hiraganaPreview.textContent = "-";
-    statusOutput.innerHTML = "<p>中文姓名会自动补全片假名和平假名，护照英文姓名会自动补全全角版本。</p>";
+    statusOutput.innerHTML = showsKanaPreview
+      ? "<p>中文姓名会自动补全片假名和平假名，护照英文姓名会自动补全全角版本。</p>"
+      : "<p>请确认填写内容准确无误。</p>";
   }
 
   syncFullwidthEnglish();
@@ -828,9 +848,6 @@ serviceEntryButtons.forEach((button) => {
 renderModeButtons();
 renderActiveMode();
 renderFormattedResult("");
-
-
-
 
 
 
