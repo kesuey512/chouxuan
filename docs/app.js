@@ -156,8 +156,8 @@ let selectedBigbangSeat = "";
 let selectedBigbangQuantity = 0;
 
 const BIGBANG_CUSTOMER_RATES = {
-  full: 0.0421,
-  standard: 0.0436
+  full: 0.0422,
+  standard: 0.0437
 };
 
 const BIGBANG_CUSTOMER_LABELS = {
@@ -848,7 +848,6 @@ serviceEntryButtons.forEach((button) => {
 renderModeButtons();
 renderActiveMode();
 renderFormattedResult("");
-
 
 
 
