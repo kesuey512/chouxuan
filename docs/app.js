@@ -80,16 +80,18 @@ const FIELD_LIBRARY = {
   wechat: { label: "\u5fae\u4fe1\u53f7\uff08\u4ec5\u5907\u7528\uff09", type: "text", placeholder: "\u53ef\u9009\u586b\u5199" },
   memberEmail: { label: "\u4f1a\u5458\u90ae\u7bb1", type: "email", placeholder: "\u4f1a\u5458\u767b\u5f55\u90ae\u7bb1" },
   memberPassword: { label: "\u4f1a\u5458\u5bc6\u7801", type: "text", placeholder: "\u4f1a\u5458\u767b\u5f55\u5bc6\u7801" },
+  memberAccount: { label: "\u4f1a\u5458\u8d26\u53f7", type: "text", placeholder: "\u8bf7\u8f93\u5165\u4f1a\u5458\u8d26\u53f7" },
+  account: { label: "\u8d26\u53f7", type: "text", placeholder: "\u8bf7\u8f93\u5165\u8d26\u53f7" },
+  optionalPassword: { label: "\u5bc6\u7801", type: "text", placeholder: "\u5982\u679c\u6ca1\u6709\u8d26\u53f7\u65e0\u9700\u586b\u5199\u5bc6\u7801" },
   memberNumber: { label: "\u4f1a\u5458\u53f7", type: "text", placeholder: "\u4f1a\u5458\u7f16\u53f7" },
-  xianyuId: { label: "\u95f2\u9c7cID", type: "text", placeholder: "\u8bf7\u8f93\u5165\u95f2\u9c7cID" },
   wvsEmail: { label: "wvs\u8d26\u53f7\uff08\u90ae\u7bb1\uff09", type: "email", placeholder: "wvs \u767b\u5f55\u90ae\u7bb1" },
   wvsPassword: { label: "wvs\u5bc6\u7801", type: "text", placeholder: "wvs \u767b\u5f55\u5bc6\u7801" },
+  optionalWvsPassword: { label: "wvs\u767b\u5f55\u5bc6\u7801", type: "text", placeholder: "\u5982\u679c\u6ca1\u6709wvs\u8d26\u53f7\u65e0\u9700\u586b\u5199" },
   address: { label: "\u5730\u5740", type: "textarea", placeholder: "\u4f8b\u5982\uff1a\u586b\u5199\u5230\u5e02\u5373\u53ef" },
   japanAddress: { label: "\u65e5\u672c\u5730\u5740", type: "textarea", placeholder: "\u586b\u5199\u5b8c\u6574\u53ef\u7528\u5730\u5740" },
   wvsJpAddress: { label: "\u65e5\u672c\u5730\u5740", type: "textarea", placeholder: "\u586b\u5199\u4e0e\u65e5\u5496\u5b98\u7f51\u4e00\u81f4\u7684\u5185\u5bb9" },
   memberInfoAddress: { label: "\u65e5\u672c\u5730\u5740", type: "textarea", placeholder: "\u4e0e\u4f1a\u5458\u4fe1\u606f\u4e00\u81f4" },
   lotteryInfo: { label: "\u62bd\u9009\u4fe1\u606f", type: "textarea", placeholder: "\u4f8b\u5982\uff1a6.24 \u6307\u5b9a\u5e2d \u4e00\u5f20" },
-  bigbangSecondRoundLotteryInfo: { label: "\u62bd\u9009\u4fe1\u606f", type: "textarea", placeholder: "\u7b2c\u4e00\u5fd7\u613f\uff1a\n\u7b2c\u4e8c\u5fd7\u613f\uff1a" },
   reservationNumber: { label: "\u9884\u7ea6\u756a\u53f7", type: "text", placeholder: "\u5982\u679c\u9002\u7528\u518d\u586b\u5199" },
   reservationNumberRequired: { label: "\u9884\u7ea6\u756a\u53f7", type: "text", placeholder: "\u7f57\u68ee\u5347p\u5fc5\u586b", required: true },
   optionalJapanPhone: { label: "\u53ef\u9a8c\u8bc1\u65e5\u672c\u7535\u8bdd", type: "text", placeholder: "\u6ca1\u6709\u53ef\u7559\u7a7a", help: "\u5982\u679c\u4f60\u6709\u53ef\u4ee5\u9a8c\u8bc1\u7684\u65e5\u672c\u7535\u8bdd\u53ef\u4ee5\u53d1\u7ed9\u6211\uff0c\u6ca1\u6709\u7684\u8bdd\u5ffd\u7565\u3002" },
@@ -102,28 +104,23 @@ const FIELD_LIBRARY = {
 
 const MODE_GROUPS = [
   { id: "open_only", label: "\u4ec5\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458", hint: "\u9002\u5408\u53ea\u5f00\u901a\u8d26\u53f7\u6216\u4f1a\u5458" },
-  { id: "open_and_lottery", label: "\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458\u5e76\u53c2\u52a0\u62bd\u9009", hint: "\u4ece\u96f6\u51c6\u5907\u8d26\u53f7\u548c\u62bd\u9009\u8d44\u6599" },
-  { id: "lottery_only", label: "\u5df2\u6709\u8d26\u53f7\uff0c\u4ec5\u53c2\u52a0\u62bd\u9009", hint: "\u5df2\u6709\u4f1a\u5458\u6216\u8d26\u53f7\uff0c\u53ea\u8865\u62bd\u9009\u4fe1\u606f" },
-  { id: "wvs_special", label: "WVS \u4f1a\u5458\u4e13\u62cd", hint: "\u53ea\u9700\u8981\u5f00\u901a\u65e5\u5496\u4f1a\u5458\uff0c\u4e0d\u9700\u8981\u5e2e\u5fd9\u5b8c\u5584\u5b98\u7f51\u4fe1\u606f" },
-  { id: "bigbang_second_round", label: "BIGBANG\u65e5\u5de1\u4e8c\u8f6e\u4e13\u7528", hint: "\u4ec5\u9650\u5728\u6211\u8fd9\u91cc\u5df2\u7ecf\u62bd\u8fc7\u4e00\u8f6e\u7684\u4f1a\u5458" }
+  { id: "open_and_lottery", label: "\u9700\u8981\u5f00\u901a\u8d26\u53f7+\u62bd\u9009", hint: "\u4ece\u96f6\u51c6\u5907\u8d26\u53f7\u548c\u62bd\u9009\u8d44\u6599" },
+  { id: "lottery_only", label: "\u4ec5\u9700\u62bd\u9009", hint: "\u6839\u636e\u6709\u65e0\u4f1a\u5458\u6536\u96c6\u62bd\u9009\u4fe1\u606f" },
+  { id: "wvs_special", label: "WVS \u4f1a\u5458\u4e13\u62cd", hint: "\u53ea\u9700\u8981\u5f00\u901a\u65e5\u5496\u4f1a\u5458\uff0c\u4e0d\u9700\u8981\u5e2e\u5fd9\u5b8c\u5584\u5b98\u7f51\u4fe1\u606f" }
 ];
 
 const MODE_TEMPLATES = [
   { id: "fanclub_member_official", group: "open_only", category: "\u5f00\u901a", name: "\u4ec5\u9700\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458", subtitle: "\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458\u8d44\u6599", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "gender", "phone", "email", "birthday", "optionalJapanAddressPhone"] },
-  { id: "fanclub_all", group: "open_and_lottery", category: "\u62bd\u9009", name: "\u6ca1\u6709wvs\u8d26\u53f7", subtitle: "\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458+\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "birthday", "gender", "phone", "email", "favoriteMember", "lotteryInfo", "wechat", "optionalJapanAddressPhone"] },
-  { id: "wvs_all", group: "open_and_lottery", category: "\u62bd\u9009", name: "\u6709wvs\u8d26\u53f7", subtitle: "\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458+\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "birthday", "gender", "phone", "wvsEmail", "wvsPassword", "favoriteMember", "lotteryInfo", "wechat", "optionalJapanAddressPhone"] },
-  { id: "fanclub_lottery", group: "lottery_only", category: "\u62bd\u9009", name: "\u5176\u4ed6\u4f1a\u5458", subtitle: "\u4ec5\u9700\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "gender", "birthday", "memberEmail", "memberPassword", "memberNumber", "memberInfoPhone", "memberInfoAddress", "lotteryInfo", "wechat"] },
-  { id: "wvs_lottery", group: "lottery_only", category: "\u62bd\u9009", name: "wvs\u65e5\u5496\u4f1a\u5458\u4e00\u8f6e\u62bd\u9009", subtitle: "\u4e00\u8f6e\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "manualKanaFull", "gender", "birthday", "wvsEmail", "wvsPassword", "memberNumber", "wvsJpPhone", "wvsJpAddress", "lotteryInfo", "wechat"] },
-  { id: "wvs_official_lottery", group: "lottery_only", category: "\u5347p", name: "wvs\u65e5\u5496\u4f1a\u5458\u5347p", subtitle: "\u5347p\u5fc5\u586b\u9884\u7ea6\u756a\u53f7", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "manualKanaFull", "gender", "birthday", "wvsEmail", "wvsPassword", "memberNumber", "wvsJpPhone", "wvsJpAddress", "reservationNumberRequired", "lotteryInfo", "wechat"] },
-  { id: "global_member", group: "lottery_only", category: "\u62bd\u9009", name: "global\u4f1a\u5458\u4e00\u8f6e\u62bd\u9009", subtitle: "\u4e00\u8f6e\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "birthday", "gender", "globalMemberPhone", "wvsEmail", "wvsPassword", "memberNumber", "address", "lotteryInfo"] },
-  { id: "global_upgrade", group: "lottery_only", category: "\u5347p", name: "global\u4f1a\u5458\u5347p", subtitle: "\u5347p\u5fc5\u586b\u9884\u7ea6\u756a\u53f7", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "birthday", "gender", "globalMemberPhone", "wvsEmail", "wvsPassword", "memberNumber", "address", "reservationNumberRequired", "lotteryInfo"] },
-  { id: "wvs_special", group: "wvs_special", category: "\u4e13\u62cd", name: "\u5f00\u901awvs\u65e5\u5496\u4f1a\u5458\u4e13\u62cd", subtitle: "\u4e13\u62cd\u6216\u7279\u6b8a\u6d3b\u52a8", note: "", fields: ["passportEnglishName", "passportChineseName", "kanaFull", "gender", "phone", "wvsEmail", "wvsPassword", "wechat"] },
-  { id: "bigbang_second_round", group: "bigbang_second_round", category: "\u62bd\u9009", name: "\u4fe1\u606f\u6536\u96c6", subtitle: "\u4ec5\u9650\u5728\u6211\u8fd9\u91cc\u5df2\u7ecf\u62bd\u8fc7\u4e00\u8f6e\u7684\u4f1a\u5458", note: "\u4ec5\u9650\u5728\u6211\u8fd9\u91cc\u5df2\u7ecf\u62bd\u8fc7\u4e00\u8f6e\u7684\u4f1a\u5458\u586b\u5199\u3002", fields: ["passportEnglishName", "birthday", "memberNumber", "memberEmail", "xianyuId", "bigbangSecondRoundLotteryInfo"], requiredFields: ["passportEnglishName", "birthday", "memberNumber", "memberEmail", "xianyuId", "bigbangSecondRoundLotteryInfo"] }
+  { id: "wvs_all", group: "open_and_lottery", category: "\u62bd\u9009", name: "\u9700\u8981\u5f00\u901a\u8d26\u53f7+\u62bd\u9009", subtitle: "\u5f00\u901a\u8d26\u53f7\u5e76\u53c2\u52a0\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "birthday", "gender", "phone", "wvsEmail", "optionalWvsPassword", "favoriteMember", "lotteryInfo", "wechat", "optionalJapanAddressPhone"] },
+  { id: "member_lottery", group: "lottery_only", category: "\u62bd\u9009", name: "\u6709\u4f1a\u5458", subtitle: "\u4f7f\u7528\u5df2\u6709\u4f1a\u5458\u4fe1\u606f\u53c2\u52a0\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "manualKanaFull", "gender", "birthday", "memberAccount", "memberPassword", "memberNumber", "wvsJpPhone", "wvsJpAddress", "lotteryInfo", "wechat"] },
+  { id: "no_member_lottery", group: "lottery_only", category: "\u62bd\u9009", name: "\u65e0\u4f1a\u5458", subtitle: "\u65e0\u4f1a\u5458\u53c2\u52a0\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "gender", "birthday", "account", "optionalPassword", "memberInfoPhone", "memberInfoAddress", "lotteryInfo", "wechat"] },
+  { id: "wvs_special", group: "wvs_special", category: "\u4e13\u62cd", name: "\u5f00\u901awvs\u65e5\u5496\u4f1a\u5458\u4e13\u62cd", subtitle: "\u4e13\u62cd\u6216\u7279\u6b8a\u6d3b\u52a8", note: "", fields: ["passportEnglishName", "passportChineseName", "kanaFull", "gender", "phone", "wvsEmail", "wvsPassword", "wechat"] }
 ];
 const modeList = document.getElementById("modeList");
 const modeTitle = document.getElementById("modeTitle");
 const modeSubtitle = document.getElementById("modeSubtitle");
 const modeNote = document.getElementById("modeNote");
+const formPanel = document.querySelector(".form-panel");
 const formFields = document.getElementById("formFields");
 const collectorForm = document.getElementById("collectorForm");
 const resetFormButton = document.getElementById("resetFormButton");
@@ -182,35 +179,17 @@ const FLOW_TREE = [
   },
   {
     id: "open_and_lottery",
-    label: "\u9700\u8981\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458+\u62bd\u9009",
+    label: "\u9700\u8981\u5f00\u901a\u8d26\u53f7+\u62bd\u9009",
     hint: "\u4ece\u96f6\u51c6\u5907\uff0c\u540c\u65f6\u53c2\u52a0\u62bd\u9009",
-    children: [
-      { id: "has_wvs", label: "\u6709wvs\u8d26\u53f7", modeId: "wvs_all" },
-      { id: "no_wvs", label: "\u6ca1\u6709wvs\u8d26\u53f7", modeId: "fanclub_all" }
-    ]
+    modeId: "wvs_all"
   },
   {
     id: "lottery_only",
     label: "\u4ec5\u9700\u62bd\u9009",
-    hint: "\u5df2\u6709\u8d26\u53f7\u6216\u4f1a\u5458\uff0c\u53ea\u8865\u62bd\u9009\u4fe1\u606f",
+    hint: "\u6839\u636e\u6709\u65e0\u4f1a\u5458\u586b\u5199\u62bd\u9009\u4fe1\u606f",
     children: [
-      {
-        id: "global_member_branch",
-        label: "global\u4f1a\u5458",
-        children: [
-          { id: "global_round", label: "\u4e00\u8f6e\u62bd\u9009", modeId: "global_member" },
-          { id: "global_upgrade", label: "\u5347p", modeId: "global_upgrade" }
-        ]
-      },
-      {
-        id: "wvs_jp_branch",
-        label: "wvs\u65e5\u5496\u4f1a\u5458",
-        children: [
-          { id: "wvs_round", label: "\u4e00\u8f6e\u62bd\u9009", modeId: "wvs_lottery" },
-          { id: "wvs_upgrade", label: "\u5347p", modeId: "wvs_official_lottery" }
-        ]
-      },
-      { id: "other_member_branch", label: "\u5176\u4ed6\u4f1a\u5458", modeId: "fanclub_lottery" }
+      { id: "has_member", label: "\u6709\u4f1a\u5458", modeId: "member_lottery" },
+      { id: "no_member", label: "\u65e0\u4f1a\u5458", modeId: "no_member_lottery" }
     ]
   },
   {
@@ -218,12 +197,6 @@ const FLOW_TREE = [
     label: "\u5f00\u901awvs\u65e5\u5496\u4f1a\u5458\u4e13\u62cd",
     hint: "\u53ea\u9700\u8981\u5f00\u901a\u65e5\u5496\u4f1a\u5458\uff0c\u4e0d\u9700\u8981\u5e2e\u5fd9\u5b8c\u5584\u5b98\u7f51\u4fe1\u606f",
     modeId: "wvs_special"
-  },
-  {
-    id: "bigbang_second_round_direct",
-    label: "BIGBANG\u65e5\u5de1\u4e8c\u8f6e\u4e13\u7528",
-    hint: "\u4ec5\u9650\u5728\u6211\u8fd9\u91cc\u5df2\u7ecf\u62bd\u8fc7\u4e00\u8f6e\u7684\u4f1a\u5458",
-    modeId: "bigbang_second_round"
   }
 ];
 
@@ -443,6 +416,11 @@ function pathIncludes(columnPath, nodeId) {
   return activeFlowPath[columnPath.length] === nodeId;
 }
 
+function hasSelectedTerminalOption() {
+  const selectedNode = getNodeByPath(activeFlowPath);
+  return Boolean(selectedNode?.modeId && MODE_BY_ID[selectedNode.modeId]);
+}
+
 function getChoiceLevels() {
   const levels = [];
   let nodes = FLOW_TREE;
@@ -576,6 +554,16 @@ function createField(fieldId) {
 }
 
 function renderActiveMode() {
+  if (!hasSelectedTerminalOption()) {
+    if (formPanel) {
+      formPanel.hidden = true;
+    }
+    return;
+  }
+
+  if (formPanel) {
+    formPanel.hidden = false;
+  }
   const activeGroup = MODE_GROUPS.find((group) => group.id === activeMode.group);
   modeTitle.textContent = `${activeGroup ? activeGroup.label : activeMode.category} / ${activeMode.name}`;
   modeSubtitle.textContent = activeMode.subtitle;
@@ -834,10 +822,6 @@ serviceEntryButtons.forEach((button) => {
 renderModeButtons();
 renderActiveMode();
 renderFormattedResult("");
-
-
-
-
 
 
 
