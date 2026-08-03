@@ -77,7 +77,8 @@ const FIELD_LIBRARY = {
   memberInfoPhone: { label: "\u7535\u8bdd", type: "tel", placeholder: "\u4e0e\u4f1a\u5458\u4fe1\u606f\u4e00\u81f4" },
   wvsJpPhone: { label: "\u7535\u8bdd", type: "tel", placeholder: "\u586b\u5199\u4e0e\u65e5\u5496\u5b98\u7f51\u4e00\u81f4\u7684\u5185\u5bb9" },
   favoriteMember: { label: "\u6700\u559c\u6b22\u7684\u6210\u5458", type: "text", placeholder: "\u53ef\u586b\u5199\u6210\u5458\u540d" },
-  wechat: { label: "\u5fae\u4fe1\u53f7\uff08\u4ec5\u5907\u7528\uff09", type: "text", placeholder: "\u53ef\u9009\u586b\u5199" },
+  xianyuId: { label: "\u95f2\u9c7c ID", type: "text", placeholder: "\u8bf7\u586b\u5199\u95f2\u9c7c ID" },
+  wechat: { label: "\u5fae\u4fe1\u53f7\uff08\u4ec5\u5907\u7528\uff09", type: "text", placeholder: "\u5982\u679c\u4e0d\u7ecf\u5e38\u770b\u95f2\u9c7c\u7684\u8bdd\u4e00\u5b9a\u8981\u586b\u5199\u5fae\u4fe1\u53f7\uff0c\u9632\u6b62\u8054\u7cfb\u4e0d\u4e0a" },
   memberEmail: { label: "\u4f1a\u5458\u90ae\u7bb1", type: "email", placeholder: "\u4f1a\u5458\u767b\u5f55\u90ae\u7bb1" },
   memberPassword: { label: "\u4f1a\u5458\u5bc6\u7801", type: "text", placeholder: "\u4f1a\u5458\u767b\u5f55\u5bc6\u7801" },
   memberAccount: { label: "\u4f1a\u5458\u8d26\u53f7", type: "text", placeholder: "\u8bf7\u8f93\u5165\u4f1a\u5458\u8d26\u53f7" },
@@ -110,11 +111,11 @@ const MODE_GROUPS = [
 ];
 
 const MODE_TEMPLATES = [
-  { id: "fanclub_member_official", group: "open_only", category: "\u5f00\u901a", name: "\u4ec5\u9700\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458", subtitle: "\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458\u8d44\u6599", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "gender", "phone", "email", "birthday", "optionalJapanAddressPhone"] },
-  { id: "wvs_all", group: "open_and_lottery", category: "\u62bd\u9009", name: "\u9700\u8981\u5f00\u901a\u8d26\u53f7+\u62bd\u9009", subtitle: "\u5f00\u901a\u8d26\u53f7\u5e76\u53c2\u52a0\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "birthday", "gender", "phone", "wvsEmail", "optionalWvsPassword", "favoriteMember", "lotteryInfo", "wechat", "optionalJapanAddressPhone"] },
-  { id: "member_lottery", group: "lottery_only", category: "\u62bd\u9009", name: "\u6709\u4f1a\u5458", subtitle: "\u4f7f\u7528\u5df2\u6709\u4f1a\u5458\u4fe1\u606f\u53c2\u52a0\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "manualKanaFull", "gender", "birthday", "memberAccount", "memberPassword", "memberNumber", "wvsJpPhone", "wvsJpAddress", "lotteryInfo", "wechat"] },
-  { id: "no_member_lottery", group: "lottery_only", category: "\u62bd\u9009", name: "\u65e0\u4f1a\u5458", subtitle: "\u65e0\u4f1a\u5458\u53c2\u52a0\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "gender", "birthday", "account", "optionalPassword", "memberInfoPhone", "memberInfoAddress", "lotteryInfo", "wechat"] },
-  { id: "wvs_special", group: "wvs_special", category: "\u4e13\u62cd", name: "\u5f00\u901awvs\u65e5\u5496\u4f1a\u5458\u4e13\u62cd", subtitle: "\u4e13\u62cd\u6216\u7279\u6b8a\u6d3b\u52a8", note: "", fields: ["passportEnglishName", "passportChineseName", "kanaFull", "gender", "phone", "wvsEmail", "wvsPassword", "wechat"] }
+  { id: "fanclub_member_official", group: "open_only", category: "\u5f00\u901a", name: "\u4ec5\u9700\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458", subtitle: "\u5f00\u901a\u8d26\u53f7/\u4f1a\u5458\u8d44\u6599", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "gender", "phone", "email", "birthday", "optionalJapanAddressPhone", "xianyuId", "wechat"] },
+  { id: "wvs_all", group: "open_and_lottery", category: "\u62bd\u9009", name: "\u9700\u8981\u5f00\u901a\u8d26\u53f7+\u62bd\u9009", subtitle: "\u5f00\u901a\u8d26\u53f7\u5e76\u53c2\u52a0\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "birthday", "gender", "phone", "email", "optionalWvsPassword", "favoriteMember", "lotteryInfo", "xianyuId", "wechat", "optionalJapanAddressPhone"] },
+  { id: "member_lottery", group: "lottery_only", category: "\u62bd\u9009", name: "\u6709\u4f1a\u5458", subtitle: "\u4f7f\u7528\u5df2\u6709\u4f1a\u5458\u4fe1\u606f\u53c2\u52a0\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "manualKanaFull", "gender", "birthday", "memberAccount", "memberPassword", "memberNumber", "wvsJpPhone", "wvsJpAddress", "lotteryInfo", "xianyuId", "wechat"] },
+  { id: "no_member_lottery", group: "lottery_only", category: "\u62bd\u9009", name: "\u65e0\u4f1a\u5458", subtitle: "\u65e0\u4f1a\u5458\u53c2\u52a0\u62bd\u9009", note: "", fields: ["passportEnglishName", "passportEnglishNameFullwidth", "passportChineseName", "kanaFull", "hiraganaFull", "gender", "birthday", "account", "optionalPassword", "memberInfoPhone", "memberInfoAddress", "lotteryInfo", "xianyuId", "wechat"] },
+  { id: "wvs_special", group: "wvs_special", category: "\u4e13\u62cd", name: "\u5f00\u901awvs\u65e5\u5496\u4f1a\u5458\u4e13\u62cd", subtitle: "\u4e13\u62cd\u6216\u7279\u6b8a\u6d3b\u52a8", note: "", fields: ["passportEnglishName", "passportChineseName", "kanaFull", "gender", "phone", "wvsEmail", "wvsPassword", "xianyuId", "wechat"] }
 ];
 const modeList = document.getElementById("modeList");
 const modeTitle = document.getElementById("modeTitle");
@@ -822,8 +823,6 @@ serviceEntryButtons.forEach((button) => {
 renderModeButtons();
 renderActiveMode();
 renderFormattedResult("");
-
-
 
 
 
